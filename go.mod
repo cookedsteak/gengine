@@ -1,6 +1,6 @@
 module github.com/cookedsteak/gengine
 
-go 1.20
+go 1.18
 
 require (
 	github.com/antlr/antlr4 v0.0.0-20210105192202-5c2b686f95e1
