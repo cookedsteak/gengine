@@ -2,13 +2,14 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"reflect"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
 type Container struct {
@@ -111,7 +112,7 @@ func TestRuleInitTest(t *testing.T) {
 	}
 }
 
-//pool 模式
+// pool 模式
 func TestRuleInitTest_pool(t *testing.T) {
 
 	//init和execute是异步的

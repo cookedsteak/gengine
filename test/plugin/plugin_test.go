@@ -2,21 +2,21 @@ package main
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"os"
 	"path"
 	"path/filepath"
 	"plugin"
 	"testing"
-)
 
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
+)
 
 func Test_pligin(t *testing.T) {
 
 	dir, err := os.Getwd()
-	if err!=nil {
+	if err != nil {
 		panic(err)
 	}
 
@@ -49,16 +49,16 @@ func Test_pligin(t *testing.T) {
 
 }
 
-func Test_plugin_with_gengine(t *testing.T)  {
+func Test_plugin_with_gengine(t *testing.T) {
 
 	dir, err := os.Getwd()
-	if err!=nil {
+	if err != nil {
 		panic(err)
 	}
 
 	dc := context.NewDataContext()
 	//3.load plugin into apiName, exportApi
-	_, _, e := dc.PluginLoader( dir + "/plugin_M_m.so")
+	_, _, e := dc.PluginLoader(dir + "/plugin_M_m.so")
 	if e != nil {
 		panic(e)
 	}
@@ -84,15 +84,14 @@ func Test_plugin_with_gengine(t *testing.T)  {
 	gengine := engine.NewGengine()
 	err = gengine.Execute(ruleBuilder, false)
 
-	if err!=nil {
+	if err != nil {
 		panic(err)
 	}
 }
 
+func Test_plugin_with_pool(t *testing.T) {
 
-func Test_plugin_with_pool(t *testing.T)  {
-
-	rule :=`
+	rule := `
 	rule "1"
 	begin
 	 
@@ -112,11 +111,11 @@ func Test_plugin_with_pool(t *testing.T)  {
 	}
 
 	dir, err := os.Getwd()
-	if err!=nil {
+	if err != nil {
 		panic(err)
 	}
 
-	e = pool.PluginLoader( dir + "/plugin_M_m.so")
+	e = pool.PluginLoader(dir + "/plugin_M_m.so")
 	if e != nil {
 		panic(e)
 	}
@@ -136,11 +135,11 @@ func Test_plugin_with_pool(t *testing.T)  {
 func Test_file(t *testing.T) {
 
 	///Users/renyunyi/go_project/gengine/test/plugin_t/
-	files :="plugin_superman.so"
+	files := "plugin_superman.so"
 	dir, file := filepath.Split(files)
 	println(dir, file, filepath.Base(files), path.Ext(files))
 	s, err := os.Getwd()
-	if err!=nil {
+	if err != nil {
 		panic(err)
 	}
 

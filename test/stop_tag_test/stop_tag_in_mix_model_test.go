@@ -2,10 +2,11 @@ package stop_tag
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
 const mix_rule = `

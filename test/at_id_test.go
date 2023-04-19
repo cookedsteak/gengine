@@ -2,13 +2,15 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
-/**
+/*
+*
 use '@id',you can get rule name in rule content
 */
 const atIDRule = `

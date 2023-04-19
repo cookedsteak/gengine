@@ -2,11 +2,12 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/engine"
 )
 
-//测试代码框架
+// 测试代码框架
 func nmpFramework(n, m, em int, names []string) {
 	type Data struct {
 		Count int

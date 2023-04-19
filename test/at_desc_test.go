@@ -2,14 +2,16 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
 	"time"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
-/**
+/*
+*
 use '@desc',you can get rule description in rule content
 */
 const atDescRule = `

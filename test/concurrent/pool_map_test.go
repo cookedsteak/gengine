@@ -2,12 +2,13 @@ package concurrent
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
 const map_rules = `
@@ -184,7 +185,7 @@ func Test_map_bbb(t *testing.T) {
 
 }
 
-//bad case
+// bad case
 func Test_map_conc(t *testing.T) {
 	//init
 	apis := make(map[string]interface{})

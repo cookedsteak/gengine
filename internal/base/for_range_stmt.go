@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/internal/iter"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/internal/iter"
 )
 
-// 	forRane循环语法 forRange key=mapInfo{}
+// forRane循环语法 forRange key=mapInfo{}
 type ForRangeStmt struct {
 	SourceCode
 	StatementList *Statements

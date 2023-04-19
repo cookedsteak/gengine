@@ -3,13 +3,14 @@ package server
 import (
 	"errors"
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
-//不使用gengine pool,但是也要实现多gengine实例
+// 不使用gengine pool,但是也要实现多gengine实例
 type IEngine struct {
 	Rb       *builder.RuleBuilder
 	Engine   *engine.Gengine
@@ -28,7 +29,7 @@ type MySelfService struct {
 	//other params
 }
 
-//请确保注入的API是线程安全的
+// 请确保注入的API是线程安全的
 func NewService(iNum int, ruleStr string, apiOuter map[string]interface{}) *MySelfService {
 	if iNum < 1 {
 		panic(fmt.Sprintf("engines' number should be bigger than 0!"))
@@ -66,7 +67,7 @@ func NewService(iNum int, ruleStr string, apiOuter map[string]interface{}) *MySe
 	}
 }
 
-//this could ensure make thread safety!
+// this could ensure make thread safety!
 func makeRuleBuilder(ruleStr string, apiOuter map[string]interface{}) (*builder.RuleBuilder, error) {
 	dataContext := context.NewDataContext()
 	if apiOuter != nil {
@@ -86,7 +87,7 @@ func makeRuleBuilder(ruleStr string, apiOuter map[string]interface{}) (*builder.
 	return rb, nil
 }
 
-//异步构建规则，可确保构建规则不影响程序性能，美滋滋
+// 异步构建规则，可确保构建规则不影响程序性能，美滋滋
 func (ms *MySelfService) UpdateRules(ruleStr string) error {
 	buildersChan := make(chan *builder.RuleBuilder, ms.Len)
 	for i := 0; i < ms.Len; i++ {
@@ -128,7 +129,7 @@ func (ms *MySelfService) Service(req *Request) (*Response, error) {
 	return resp, nil
 }
 
-//模拟使用
+// 模拟使用
 func Test_self(t *testing.T) {
 	apis := make(map[string]interface{})
 	apis["println"] = fmt.Println

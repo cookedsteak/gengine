@@ -10,7 +10,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/bilibili/gengine/internal/core"
+	"github.com/cookedsteak/gengine/internal/core"
 )
 
 type DataContext struct {
@@ -49,11 +49,11 @@ func (dc *DataContext) Del(keys ...string) {
 	}
 }
 
-//plugin_exportName_apiName.so
+// plugin_exportName_apiName.so
 // _ is a separator
-//plugin is prefix
-//exportName is user export in plugin file
-//apiName is plugin used in gengine
+// plugin is prefix
+// exportName is user export in plugin file
+// apiName is plugin used in gengine
 func (dc *DataContext) PluginLoader(absolutePathOfSO string) (string, plugin.Symbol, error) {
 
 	plg, err := plugin.Open(absolutePathOfSO)
@@ -99,7 +99,8 @@ func (dc *DataContext) Get(key string) (reflect.Value, error) {
 	}
 }
 
-/**
+/*
+*
 execute the injected functions: a(..)
 function execute supply multi return values, but simplify ,just return one value
 */
@@ -133,7 +134,8 @@ func (dc *DataContext) ExecFunc(Vars map[string]reflect.Value, funcName string, 
 	return reflect.ValueOf(nil), errors.New(fmt.Sprintf("NOT FOUND function \"%s(..)\"", funcName))
 }
 
-/**
+/*
+*
 execute the struct's functions: a.b(..)
 function execute supply multi return values, but simplify ,just return one value
 */
@@ -172,7 +174,8 @@ func (dc *DataContext) ExecMethod(Vars map[string]reflect.Value, methodName stri
 	return reflect.ValueOf(nil), errors.New(fmt.Sprintf("Not found method: \"%s(..)\"", methodName))
 }
 
-/**
+/*
+*
 execute the struct's functions: a.b.c(..)
 function execute supply multi return values, but simplify ,just return one value
 */
@@ -221,7 +224,8 @@ func (dc *DataContext) ExecThreeLevel(Vars map[string]reflect.Value, threeLevelN
 	return reflect.ValueOf(nil), errors.New(fmt.Sprintf("Not found method: \"%s(..)\"", threeLevelName))
 }
 
-/**
+/*
+*
 get the value user set
 */
 func (dc *DataContext) GetValue(Vars map[string]reflect.Value, variable string) (reflect.Value, error) {

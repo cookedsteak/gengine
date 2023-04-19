@@ -2,11 +2,12 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/engine"
 	"math/rand"
 	"sync/atomic"
 	"testing"
 	"time"
+
+	"github.com/cookedsteak/gengine/engine"
 )
 
 type Reqest struct {

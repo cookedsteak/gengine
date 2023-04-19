@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/engine"
+	"github.com/cookedsteak/gengine/engine"
 	"testing"
 )
 

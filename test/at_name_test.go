@@ -2,18 +2,20 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
 	"time"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
 func PrintName(name string) {
 	fmt.Println(name)
 }
 
-/**
+/*
+*
 use '@name',you can get rule name in rule content
 */
 const atname_rule = `

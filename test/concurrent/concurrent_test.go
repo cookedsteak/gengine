@@ -2,10 +2,11 @@ package concurrent
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
-	"github.com/bilibili/gengine/test"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
+	"github.com/cookedsteak/gengine/test"
 
 	"io/ioutil"
 	"os"

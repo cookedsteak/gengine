@@ -2,10 +2,11 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
 const n_m_model_rules = `
@@ -50,7 +51,7 @@ end
 
 `
 
-//测试代码框架
+// 测试代码框架
 func nmFramework(n, m, em int, names []string) {
 	type Data struct {
 		Count int

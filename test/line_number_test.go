@@ -2,13 +2,14 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
-//测试规则报错时支持行号
+// 测试规则报错时支持行号
 const line_number_rule = `
 rule "aaa" "test line number support when execute error" 
 begin

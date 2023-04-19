@@ -1,14 +1,15 @@
 package test
 
 import (
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
-//程序基本骨架
-//program framework
+// 程序基本骨架
+// program framework
 func framework(rule string) map[string]interface{} {
 	dataContext := context.NewDataContext()
 	dataContext.Add("getInt", getInt)
@@ -32,7 +33,7 @@ func getInt() int {
 	return 666
 }
 
-//test
+// test
 func Test_return_nil_1(t *testing.T) {
 
 	//无返回值,返回nil
@@ -51,7 +52,7 @@ func Test_return_nil_1(t *testing.T) {
 	}
 }
 
-//test
+// test
 func Test_return_int64(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -68,7 +69,7 @@ func Test_return_int64(t *testing.T) {
 	println("return--->", i)
 }
 
-//test
+// test
 func Test_return_function_value_int(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -88,7 +89,7 @@ func Test_return_function_value_int(t *testing.T) {
 	println("return--->", ix)
 }
 
-//test
+// test
 func Test_return_float64(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -105,7 +106,7 @@ func Test_return_float64(t *testing.T) {
 	println("return--->", f)
 }
 
-//test
+// test
 func Test_return_bool(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -122,7 +123,7 @@ func Test_return_bool(t *testing.T) {
 	println("return--->", b)
 }
 
-//test
+// test
 func Test_return_string(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -139,7 +140,7 @@ func Test_return_string(t *testing.T) {
 	println("return--->", s)
 }
 
-//test
+// test
 func Test_return_logic_expression_bool(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -156,7 +157,7 @@ func Test_return_logic_expression_bool(t *testing.T) {
 	println("return--->", b)
 }
 
-//test
+// test
 func Test_return_logic_expression_int64(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -173,7 +174,7 @@ func Test_return_logic_expression_int64(t *testing.T) {
 	println("return--->", i)
 }
 
-//test
+// test
 func Test_return_variable_int64(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -190,7 +191,7 @@ func Test_return_variable_int64(t *testing.T) {
 	println("return--->", i)
 }
 
-//test
+// test
 func Test_return_simple_if_return_int64(t *testing.T) {
 
 	ruleName := `return_in_statements`
@@ -209,7 +210,7 @@ func Test_return_simple_if_return_int64(t *testing.T) {
 	println("return--->", i)
 }
 
-//test 这里的表现和golang return略有不同
+// test 这里的表现和golang return略有不同
 func Test_return_complex_if_return_int64(t *testing.T) {
 
 	ruleName := `return_in_statements`

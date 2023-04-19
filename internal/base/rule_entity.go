@@ -3,8 +3,9 @@ package base
 import (
 	"errors"
 	"fmt"
-	"github.com/bilibili/gengine/context"
 	"reflect"
+
+	"github.com/cookedsteak/gengine/context"
 )
 
 type RuleEntity struct {
@@ -31,7 +32,6 @@ func (r *RuleEntity) AcceptInteger(val int64) error {
 	r.Salience = val
 	return nil
 }
-
 
 func (r *RuleEntity) Execute(dc *context.DataContext) (interface{}, error, bool) {
 	v, e, b := r.RuleContent.Execute(dc, make(map[string]reflect.Value))

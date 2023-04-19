@@ -1,6 +1,6 @@
 package tool
 
-import "github.com/bilibili/gengine/internal/base"
+import "github.com/cookedsteak/gengine/internal/base"
 
 func BinarySearch(re []*base.RuleEntity, salience int64) (int, int) {
 	low := 0

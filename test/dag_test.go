@@ -2,10 +2,11 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
 func Test_dag(t *testing.T) {
@@ -13,12 +14,11 @@ func Test_dag(t *testing.T) {
 	row, column := 3, 4
 	var answer [][]int
 
-
 	for i := 0; i < row; i++ {
 		inline := make([]int, column)
 		answer = append(answer, inline)
 	}
-	fmt.Println("line len=",len(answer), "row len=", len(answer[1]))
+	fmt.Println("line len=", len(answer), "row len=", len(answer[1]))
 
 	// 方法1
 	answer1 := make([][]int, row)
@@ -29,7 +29,7 @@ func Test_dag(t *testing.T) {
 
 }
 
-func hello(x int, y string){
+func hello(x int, y string) {
 	print(x, y)
 }
 
@@ -133,8 +133,6 @@ func makeDAG() [][]string {
 	return names
 }
 
-
-
 func Test_dag_run(t *testing.T) {
 
 	dataContext := context.NewDataContext()
@@ -160,7 +158,7 @@ func Test_pool_dag_run(t *testing.T) {
 	apis := make(map[string]interface{})
 	apis["print"] = hello
 
-	pool,e1 := engine.NewGenginePool(1,2,1,dag_rules,apis)
+	pool, e1 := engine.NewGenginePool(1, 2, 1, dag_rules, apis)
 	if e1 != nil {
 		panic(e1)
 	}
@@ -172,6 +170,3 @@ func Test_pool_dag_run(t *testing.T) {
 		panic(e)
 	}
 }
-
-
-

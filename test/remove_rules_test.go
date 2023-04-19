@@ -2,10 +2,11 @@ package test
 
 import (
 	"fmt"
-	"github.com/bilibili/gengine/builder"
-	"github.com/bilibili/gengine/context"
-	"github.com/bilibili/gengine/engine"
 	"testing"
+
+	"github.com/cookedsteak/gengine/builder"
+	"github.com/cookedsteak/gengine/context"
+	"github.com/cookedsteak/gengine/engine"
 )
 
 var rules = `
@@ -59,8 +60,6 @@ func Test_single_remove_rules(t *testing.T) {
 	fmt.Println(fmt.Sprintf("%+v,len=%d", isExist, len(ruleBuilder.Kc.RuleEntities)))
 
 }
-
-
 
 func Test_pool_remove_rules(t *testing.T) {
 

@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/bilibili/gengine/context"
+	"github.com/cookedsteak/gengine/context"
 )
 
 const maxExecuteNum = 10000
 
-// 	for循环语法 for i=0;i<100;i+=1
+// for循环语法 for i=0;i<100;i+=1
 type ForStmt struct {
 	SourceCode
 	Expression    *Expression   // 表达式
