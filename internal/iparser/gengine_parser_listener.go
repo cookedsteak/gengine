@@ -469,6 +469,7 @@ func (g *GengineParserListener) ExitStringLiteral(ctx *parser.StringLiteralConte
 	holder := g.Stack.Peek().(base.StringHolder)
 	text := ctx.GetText()
 	txt := strings.Trim(text, "\"")
+	txt = strings.ReplaceAll(txt, "\\", "")
 	if reflect.TypeOf(holder).String() == "*base.MapVar" {
 		if txt == "" {
 			g.AddError(errors.New("MAP key should not be null string"))
