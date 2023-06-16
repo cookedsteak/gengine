@@ -13,8 +13,9 @@ func TestDoubleQuote(t *testing.T) {
 	rule := `
 	rule "1"  salience 1
 	begin
-		pp(name)
-		return name=="{\"code\"}"
+		pp(s1,s2)
+		s3 = "{\"code\"}"
+		return s1==s3 && s2==s3
 	end
 `
 	ep, err := engine.NewGenginePool(1, 2, 2, string(rule), nil)
@@ -23,7 +24,8 @@ func TestDoubleQuote(t *testing.T) {
 	}
 	data := make(map[string]interface{})
 	data["pp"] = fmt.Println
-	data["name"] = "{\"code\"}"
+	data["s1"] = `{"code"}`
+	data["s2"] = "{\"code\"}"
 	err, res := ep.Execute(data, true)
 	if err != nil {
 		t.Fatal(err)
