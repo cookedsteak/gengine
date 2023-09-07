@@ -3,8 +3,9 @@ package base
 import (
 	"errors"
 	"fmt"
-	"github.com/cookedsteak/gengine/context"
 	"reflect"
+
+	"github.com/cookedsteak/gengine/context"
 )
 
 var TypeMap = map[string]string{
@@ -20,6 +21,7 @@ var TypeMap = map[string]string{
 	"uint64":  "uint64",
 	"float32": "float32",
 	"float64": "float64",
+	"decimal": "decimal",
 }
 
 type Expression struct {

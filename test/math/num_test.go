@@ -22,7 +22,7 @@ const num_rule = `
 rule "rule name" "rule desc"
 begin
 entity.Score = 100 + 12/3
-entity.Height = 1.68
+entity.Height = 1.12345678901234567890
 end
 `
 
@@ -65,8 +65,8 @@ func Test_num(t *testing.T) {
 	exec_num()
 }
 
-func TestDivZero(t *testing.T) {
-	zero_rule := `
+func Test_DivZero(t *testing.T) {
+	zeroRule := `
 	rule "div zero" "rule desc"
 	begin
 	entity.Height = 10/entity.Score
@@ -81,7 +81,7 @@ func TestDivZero(t *testing.T) {
 
 	//读取规则
 	start1 := time.Now().UnixNano()
-	err := ruleBuilder.BuildRuleFromString(zero_rule)
+	err := ruleBuilder.BuildRuleFromString(zeroRule)
 	end1 := time.Now().UnixNano()
 
 	println(fmt.Sprintf("rules num:%d, load rules cost time:%d ns", len(ruleBuilder.Kc.RuleEntities), end1-start1))
@@ -100,4 +100,30 @@ func TestDivZero(t *testing.T) {
 	}
 	assert.Equal(t, 100.0, entity.Height, "return 100 not error")
 	println(fmt.Sprintf("execute rule cost %d ns", end-start))
+}
+
+func Test_Decimal(t *testing.T) {
+	decimalRule := `
+	rule "decimal rule" "rule desc"
+	begin
+	a = 1.12345678901234567890+1.1
+	entity.Height = a
+	return a
+	end
+	`
+	entity := &Entity{Score: 0}
+	dataContext := context.NewDataContext()
+	dataContext.Add("entity", entity)
+
+	//init rule engine
+	ruleBuilder := builder.NewRuleBuilder(dataContext)
+
+	//读取规则
+	err := ruleBuilder.BuildRuleFromString(decimalRule)
+	if err != nil {
+		panic(err)
+	}
+	eng := engine.NewGengine()
+	err = eng.Execute(ruleBuilder, true)
+	println(entity.Height)
 }

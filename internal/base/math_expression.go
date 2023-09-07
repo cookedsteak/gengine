@@ -51,10 +51,14 @@ func (e *MathExpression) Evaluate(dc *context.DataContext, Vars map[string]refle
 	}
 
 	lv, err := e.MathExpressionLeft.Evaluate(dc, Vars)
+	str := fmt.Sprintf("%v", lv)
+	fmt.Println(str)
 	if err != nil {
 		return reflect.ValueOf(nil), err
 	}
 	rv, err := e.MathExpressionRight.Evaluate(dc, Vars)
+	str2 := fmt.Sprintf("%v", rv)
+	fmt.Println(str2)
 	if err != nil {
 		return reflect.ValueOf(nil), err
 	}

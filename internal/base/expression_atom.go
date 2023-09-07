@@ -3,6 +3,7 @@ package base
 import (
 	"errors"
 	"reflect"
+	"strings"
 
 	"github.com/cookedsteak/gengine/context"
 )
@@ -69,7 +70,13 @@ func (e *ExpressionAtom) Evaluate(dc *context.DataContext, Vars map[string]refle
 	if len(e.Variable) > 0 {
 		return dc.GetValue(Vars, e.Variable)
 	} else if e.Constant != nil {
-		return e.Constant.Evaluate(dc, Vars)
+		val, err := e.Constant.Evaluate(dc, Vars)
+		if err != nil {
+			return val, err
+		}
+		if strings.HasPrefix(val.Kind().String(), "float") {
+			return reflect.ValueOf(e.SourceCode.Code), nil
+		}
 	} else if e.FunctionCall != nil {
 		return e.FunctionCall.Evaluate(dc, Vars)
 	} else if e.MethodCall != nil {

@@ -5,15 +5,25 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+
+	"github.com/shopspring/decimal"
 )
 
 func Add(a, b reflect.Value) (interface{}, error) {
 	akind := a.Kind().String()
 	bkind := b.Kind().String()
 
+	// 字符串之间的运算内部转换为decimal之间的运算
 	if akind == "string" && bkind == "string" {
 		//字符串相加
-		return fmt.Sprintf("%s%s", a.String(), b.String()), nil
+		va, err := decimal.NewFromString(a.String())
+		vb, err := decimal.NewFromString(b.String())
+		if err != nil {
+			// 解析错误则直接进行字符串拼接
+			return fmt.Sprintf("%s%s", a.String(), b.String()), nil
+			//return 0, err
+		}
+		return va.Add(vb).String(), nil
 	}
 
 	if strings.HasPrefix(akind, "int") {
@@ -54,7 +64,9 @@ func Add(a, b reflect.Value) (interface{}, error) {
 		}
 
 		if strings.HasPrefix(bkind, "float") {
-			return a.Float() + b.Float(), nil
+			aa := decimal.NewFromFloat(a.Float())
+			bb := decimal.NewFromFloat(b.Float())
+			return aa.Add(bb).String(), nil
 		}
 	}
 	return nil, errors.New(fmt.Sprintf("ADD(+) can't be used between %s and %s", akind, bkind))
@@ -105,6 +117,18 @@ func Sub(a, b reflect.Value) (interface{}, error) {
 			return a.Float() - b.Float(), nil
 		}
 	}
+
+	// 字符串之间的运算内部转换为decimal之间的运算
+	if akind == "string" && bkind == "string" {
+		//字符串相加
+		va, err := decimal.NewFromString(a.String())
+		vb, err := decimal.NewFromString(b.String())
+		if err == nil {
+
+		}
+		return va.Add(vb).String(), nil
+	}
+
 	return nil, errors.New(fmt.Sprintf("Sub(-) can't be used between %s and %s", akind, bkind))
 }
 

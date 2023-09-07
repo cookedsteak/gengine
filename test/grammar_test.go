@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"github.com/antlr4-go/antlr/v4"
 	"github.com/cookedsteak/gengine/builder"
 	"github.com/cookedsteak/gengine/context"
 	"github.com/cookedsteak/gengine/internal/base"
-	parser "github.com/cookedsteak/gengine/internal/iantlr/alr"
+	parser "github.com/cookedsteak/gengine/internal/iantlr/alr2"
 	"github.com/cookedsteak/gengine/internal/iparser"
 )
 

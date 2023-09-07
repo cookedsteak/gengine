@@ -1,8 +1,8 @@
-// Code generated from ../gengine.g4 by ANTLR 4.9. DO NOT EDIT.
+// Code generated from gengine.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // gengine
 
-import "github.com/antlr/antlr4/runtime/Go/antlr"
+import "github.com/antlr4-go/antlr/v4"
 
 // gengineListener is a complete listener for a parse tree produced by gengineParser.
 type gengineListener interface {
