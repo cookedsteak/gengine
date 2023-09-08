@@ -692,6 +692,7 @@ func (g *GengineParserListener) ExitElseStmt(ctx *parser.ElseStmtContext) {
 	ifStmt.ElseStmt = elseStmt
 }
 
+// integer 不能改为decimal，因为存在map以int作为索引的情况
 func (g *GengineParserListener) ExitInteger(ctx *parser.IntegerContext) {
 	if len(g.ParseErrors) > 0 {
 		return

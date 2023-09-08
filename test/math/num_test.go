@@ -17,19 +17,17 @@ import (
 type Entity struct {
 	Score  int32
 	Height interface{}
+	Name   string
 }
 
-const num_rule = `
-
-rule "rule name" "rule desc"
-begin
-entity.Score = 100 + 12/3
-entity.Height = 1.12345678901234567890
-end
+func Test_Num(t *testing.T) {
+	var num_rule = `
+	rule "rule name" "rule desc"
+	begin
+	entity.Score = 100 + 12/3
+	entity.Height = 1.1234567890123456789
+	end
 `
-
-func exec_num() {
-
 	entity := &Entity{Score: 0}
 
 	dataContext := context.NewDataContext()
@@ -55,16 +53,14 @@ func exec_num() {
 	err = eng.Execute(ruleBuilder, true)
 	end := time.Now().UnixNano()
 	println(entity.Score)
-	println(entity.Height)
+	println(entity.Height.(decimal.Decimal).String())
 	if err != nil {
 		panic(err)
 	}
+	assert.Equal(t, int32(104), entity.Score, "should equal")
+	assert.Equal(t, "1.1234567890123456789", entity.Height.(decimal.Decimal).String(), "should equal")
 	println(fmt.Sprintf("execute rule cost %d ns", end-start))
 
-}
-
-func Test_num(t *testing.T) {
-	exec_num()
 }
 
 func Test_DivZero(t *testing.T) {
@@ -100,7 +96,7 @@ func Test_DivZero(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	assert.Equal(t, 100.0, entity.Height, "return 100 not error")
+	assert.Equal(t, decimal.NewFromFloat(100.0).String(), entity.Height.(decimal.Decimal).String(), "return 100 not error")
 	println(fmt.Sprintf("execute rule cost %d ns", end-start))
 }
 
@@ -109,9 +105,10 @@ func Test_Decimal(t *testing.T) {
 	rule "decimal rule" "rule desc"
 	begin
 	a = 1.12345678901234567890+1.1
-	//a = "gogo" + "gaga"
+	b = "gogo" + "gaga"
 	entity.Height = a
-	return a
+	entity.Name = b
+	return (a==2.2234567890123456789) 
 	end
 	`
 	entity := &Entity{Score: 0}
@@ -128,5 +125,8 @@ func Test_Decimal(t *testing.T) {
 	}
 	eng := engine.NewGengine()
 	err = eng.Execute(ruleBuilder, true)
+	resMap, err := eng.GetRulesResultMap()
 	println(entity.Height.(decimal.Decimal).String())
+	println(entity.Name)
+	fmt.Printf("%v", resMap)
 }

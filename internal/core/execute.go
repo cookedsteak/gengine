@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+
+	"github.com/shopspring/decimal"
 )
 
 func InvokeFunction(obj reflect.Value, methodName string, parameters []reflect.Value) (reflect.Value, error) {
@@ -24,7 +26,8 @@ func InvokeFunction(obj reflect.Value, methodName string, parameters []reflect.V
 	return raw, nil
 }
 
-/**
+/*
+*
 if want to support multi return ,change this method implements
 */
 func GetRawTypeValue(rs []reflect.Value) (reflect.Value, error) {
@@ -46,8 +49,10 @@ func GetStructAttributeValue(obj reflect.Value, fieldName string) (reflect.Value
 	return attrVal, nil
 }
 
-/**
+/*
+*
 set field value
+value 就是右表达式的值，即可能是decimal
 */
 func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value) error {
 	field := reflect.ValueOf(nil)
@@ -73,9 +78,17 @@ func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value)
 		typeName := value.Type().String()
 		switch field.Type().Kind() {
 		case reflect.String:
+			if strings.HasPrefix(typeName, "decimal") {
+				field.SetString(value.Interface().(decimal.Decimal).String())
+				return nil
+			}
 			field.SetString(value.String())
 			break
 		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+			if strings.HasPrefix(typeName, "decimal") {
+				field.SetInt(value.Interface().(decimal.Decimal).IntPart())
+				return nil
+			}
 			if strings.HasPrefix(typeName, "uint") {
 				field.SetInt(int64(value.Uint()))
 				return nil
@@ -87,6 +100,10 @@ func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value)
 			field.SetInt(value.Int())
 			break
 		case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+			if strings.HasPrefix(typeName, "decimal") {
+				field.SetUint(uint64(value.Interface().(decimal.Decimal).IntPart()))
+				return nil
+			}
 			if strings.HasPrefix(typeName, "int") && value.Int() >= 0 {
 				field.SetUint(uint64(value.Int()))
 				return nil
@@ -98,6 +115,10 @@ func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value)
 			field.SetUint(value.Uint())
 			break
 		case reflect.Float32, reflect.Float64:
+			if strings.HasPrefix(typeName, "decimal") {
+				field.SetFloat(value.Interface().(decimal.Decimal).InexactFloat64())
+				return nil
+			}
 			if strings.HasPrefix(typeName, "int") {
 				field.SetFloat(float64(value.Int()))
 				return nil
@@ -147,7 +168,7 @@ func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value)
 	return nil
 }
 
-//set single value
+// set single value
 func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) error {
 
 	if obj.Kind() == reflect.Ptr {

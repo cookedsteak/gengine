@@ -71,7 +71,7 @@ functionArgs
 
 integer : MINUS? INT;
 
-realLiteral : MINUS? REAL_LITERAL;
+realLiteral : MINUS? REAL_LITERAL | MINUS? INT;
 
 stringLiteral: DQUOTA_STRING ;
 
@@ -207,7 +207,6 @@ REAL_LITERAL                : (DEC_DIGIT+)? '.' DEC_DIGIT+
                             | DEC_DIGIT+ '.' EXPONENT_NUM_PART
                             | (DEC_DIGIT+)? '.' (DEC_DIGIT+ EXPONENT_NUM_PART)
                             | DEC_DIGIT+ EXPONENT_NUM_PART
-                            | DEC_DIGIT+
                             ;
 
 SL_COMMENT: '//' .*? '\n' -> skip ;
