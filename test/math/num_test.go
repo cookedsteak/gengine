@@ -5,6 +5,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/shopspring/decimal"
+
 	"github.com/stretchr/testify/assert"
 
 	"github.com/cookedsteak/gengine/builder"
@@ -14,7 +16,7 @@ import (
 
 type Entity struct {
 	Score  int32
-	Height float64
+	Height interface{}
 }
 
 const num_rule = `
@@ -107,6 +109,7 @@ func Test_Decimal(t *testing.T) {
 	rule "decimal rule" "rule desc"
 	begin
 	a = 1.12345678901234567890+1.1
+	//a = "gogo" + "gaga"
 	entity.Height = a
 	return a
 	end
@@ -125,5 +128,5 @@ func Test_Decimal(t *testing.T) {
 	}
 	eng := engine.NewGengine()
 	err = eng.Execute(ruleBuilder, true)
-	println(entity.Height)
+	println(entity.Height.(decimal.Decimal).String())
 }

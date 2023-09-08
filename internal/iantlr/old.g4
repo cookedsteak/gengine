@@ -1,4 +1,4 @@
-grammar gengine;
+grammar old;
 
 primary: ruleEntity+;
 
@@ -55,7 +55,7 @@ continueStmt:  CONTINUE;
 
 constant
     : booleanLiteral
-//    | integer
+    | integer
     | realLiteral
     | stringLiteral
     | atName

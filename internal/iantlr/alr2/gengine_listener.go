@@ -131,6 +131,9 @@ type gengineListener interface {
 	// EnterAtId is called when entering the atId production.
 	EnterAtId(c *AtIdContext)
 
+	// EnterAtCode is called when entering the atCode production.
+	EnterAtCode(c *AtCodeContext)
+
 	// EnterAtDesc is called when entering the atDesc production.
 	EnterAtDesc(c *AtDescContext)
 
@@ -259,6 +262,9 @@ type gengineListener interface {
 
 	// ExitAtId is called when exiting the atId production.
 	ExitAtId(c *AtIdContext)
+
+	// ExitAtCode is called when exiting the atCode production.
+	ExitAtCode(c *AtCodeContext)
 
 	// ExitAtDesc is called when exiting the atDesc production.
 	ExitAtDesc(c *AtDescContext)

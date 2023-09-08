@@ -55,11 +55,12 @@ continueStmt:  CONTINUE;
 
 constant
     : booleanLiteral
-    | integer
+//    | integer
     | realLiteral
     | stringLiteral
     | atName
     | atId
+    | atCode
     | atDesc
     | atSal
     ;
@@ -88,9 +89,9 @@ mathPmOperator : PLUS | MINUS ;
 
 mathMdOperator : MUL | DIV ;
 
-comparisonOperator : GT | LT | GTE | LTE | EQUALS | NOTEQUALS ;
+comparisonOperator : GT | LT | GTE | LTE | EQUALS | NOTEQUALS | GT_STR | LT_STR | GTE_STR | LTE_STR | EQUALS_STR | NOTEQUALS_STR ;
 
-logicalOperator : AND | OR ;
+logicalOperator : AND | OR | AND_STR | OR_STR | AND_SINGLE | OR_SINGLE ;
 
 assignOperator: ASSIGN | SET | PLUSEQUAL | MINUSEQUAL | MULTIEQUAL | DIVEQUAL ;
 
@@ -102,6 +103,7 @@ mapVar: variable LSQARE (integer |stringLiteral | variable ) RSQARE;
 
 atName : '@name';
 atId : '@id';
+atCode: '@code';
 atDesc : '@desc';
 atSal : '@sal';
 
@@ -138,6 +140,11 @@ NIL                         : N I L;
 RULE                        : R U L E  ;
 AND                         : '&&' ;
 OR                          : '||' ;
+AND_STR                     : 'and';
+OR_STR                      : 'or';
+AND_SINGLE                  : '&';
+OR_SINGLE                   : '|';
+
 
 CONC                        : C O N C;
 IF                          : I F;
@@ -170,6 +177,12 @@ GTE                         : '>=' ;
 LTE                         : '<=' ;
 NOTEQUALS                   : '!=' ;
 NOT                         : '!' ;
+EQUALS_STR                  : 'eq' ;
+GT_STR                      : 'gt' ;
+LT_STR                      : 'lt' ;
+GTE_STR                     : 'ge' ;
+LTE_STR                     : 'le' ;
+NOTEQUALS_STR               : 'ne' ;
 
 ASSIGN                      : ':=' ;
 SET                         : '=';
@@ -194,6 +207,7 @@ REAL_LITERAL                : (DEC_DIGIT+)? '.' DEC_DIGIT+
                             | DEC_DIGIT+ '.' EXPONENT_NUM_PART
                             | (DEC_DIGIT+)? '.' (DEC_DIGIT+ EXPONENT_NUM_PART)
                             | DEC_DIGIT+ EXPONENT_NUM_PART
+                            | DEC_DIGIT+
                             ;
 
 SL_COMMENT: '//' .*? '\n' -> skip ;

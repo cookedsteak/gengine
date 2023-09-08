@@ -7,6 +7,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/shopspring/decimal"
+
 	"github.com/cookedsteak/gengine/internal/base"
 	parser "github.com/cookedsteak/gengine/internal/iantlr/alr2"
 
@@ -498,17 +500,19 @@ func (g *GengineParserListener) ExitBooleanLiteral(ctx *parser.BooleanLiteralCon
 
 func (g *GengineParserListener) EnterRealLiteral(ctx *parser.RealLiteralContext) {}
 
+// 对于real类型的处理，转换为decimal
 func (g *GengineParserListener) ExitRealLiteral(ctx *parser.RealLiteralContext) {
 	if len(g.ParseErrors) > 0 {
 		return
 	}
 	cons := g.Stack.Peek().(*base.Constant)
-	flo, err := strconv.ParseFloat(ctx.GetText(), 64)
+	dec, err := decimal.NewFromString(ctx.GetText())
+	//flo, err := strconv.ParseFloat(ctx.GetText(), 64)
 	if err != nil {
-		g.AddError(errors.New(fmt.Sprintf("string to float conversion error. String is not real type '%s'", ctx.GetText())))
+		g.AddError(errors.New(fmt.Sprintf("string to decimal conversion error. String is not real type '%s'", ctx.GetText())))
 		return
 	}
-	cons.ConstantValue = reflect.ValueOf(flo)
+	cons.ConstantValue = reflect.ValueOf(dec)
 }
 
 func (g *GengineParserListener) EnterIfStmt(ctx *parser.IfStmtContext) {

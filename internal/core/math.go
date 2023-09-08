@@ -9,21 +9,22 @@ import (
 	"github.com/shopspring/decimal"
 )
 
+const DecimalType = "decimal.Decimal"
+
 func Add(a, b reflect.Value) (interface{}, error) {
-	akind := a.Kind().String()
-	bkind := b.Kind().String()
+	//akind := a.Kind().String()
+	//bkind := b.Kind().String()
+	akind := a.Type().String()
+	bkind := b.Type().String()
+
+	// decimal 计算方法
+	if akind == DecimalType && bkind == DecimalType {
+		return a.Interface().(decimal.Decimal).Add(b.Interface().(decimal.Decimal)), nil
+	}
 
 	// 字符串之间的运算内部转换为decimal之间的运算
 	if akind == "string" && bkind == "string" {
-		//字符串相加
-		va, err := decimal.NewFromString(a.String())
-		vb, err := decimal.NewFromString(b.String())
-		if err != nil {
-			// 解析错误则直接进行字符串拼接
-			return fmt.Sprintf("%s%s", a.String(), b.String()), nil
-			//return 0, err
-		}
-		return va.Add(vb).String(), nil
+		return fmt.Sprintf("%s%s", a.String(), b.String()), nil
 	}
 
 	if strings.HasPrefix(akind, "int") {
@@ -73,8 +74,15 @@ func Add(a, b reflect.Value) (interface{}, error) {
 }
 
 func Sub(a, b reflect.Value) (interface{}, error) {
-	akind := a.Kind().String()
-	bkind := b.Kind().String()
+	//akind := a.Kind().String()
+	//bkind := b.Kind().String()
+	akind := a.Type().String()
+	bkind := b.Type().String()
+
+	// decimal 计算方法
+	if akind == DecimalType && bkind == DecimalType {
+		return a.Interface().(decimal.Decimal).Sub(b.Interface().(decimal.Decimal)), nil
+	}
 
 	if strings.HasPrefix(akind, "int") {
 		if strings.HasPrefix(bkind, "int") {
@@ -133,8 +141,15 @@ func Sub(a, b reflect.Value) (interface{}, error) {
 }
 
 func Mul(a, b reflect.Value) (interface{}, error) {
-	akind := a.Kind().String()
-	bkind := b.Kind().String()
+	//akind := a.Kind().String()
+	//bkind := b.Kind().String()
+	akind := a.Type().String()
+	bkind := b.Type().String()
+
+	// decimal 计算方法
+	if akind == DecimalType && bkind == DecimalType {
+		return a.Interface().(decimal.Decimal).Mul(b.Interface().(decimal.Decimal)), nil
+	}
 
 	if strings.HasPrefix(akind, "int") {
 		if strings.HasPrefix(bkind, "int") {
@@ -181,8 +196,10 @@ func Mul(a, b reflect.Value) (interface{}, error) {
 }
 
 func Div(a, b reflect.Value) (interface{}, error) {
-	akind := a.Kind().String()
-	bkind := b.Kind().String()
+	//akind := a.Kind().String()
+	//bkind := b.Kind().String()
+	akind := a.Type().String()
+	bkind := b.Type().String()
 
 	//if strings.HasPrefix(bkind, "int") {
 	//	bi := b.Int()
@@ -202,6 +219,14 @@ func Div(a, b reflect.Value) (interface{}, error) {
 	//		return nil, errors.New("DIV(/) can't be used to Div ZERO(0)!")
 	//	}
 	//}
+
+	// decimal 计算方法
+	if akind == DecimalType && bkind == DecimalType {
+		if b.Interface().(decimal.Decimal).Equal(decimal.NewFromInt(0)) {
+			return a.Interface().(decimal.Decimal).Mul(decimal.NewFromInt(10)), nil
+		}
+		return a.Interface().(decimal.Decimal).Div(b.Interface().(decimal.Decimal)), nil
+	}
 
 	// customize div zero logic
 	// be caution when use

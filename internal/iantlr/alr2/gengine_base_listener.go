@@ -267,6 +267,12 @@ func (s *BasegengineListener) EnterAtId(ctx *AtIdContext) {}
 // ExitAtId is called when production atId is exited.
 func (s *BasegengineListener) ExitAtId(ctx *AtIdContext) {}
 
+// EnterAtCode is called when production atCode is entered.
+func (s *BasegengineListener) EnterAtCode(ctx *AtCodeContext) {}
+
+// ExitAtCode is called when production atCode is exited.
+func (s *BasegengineListener) ExitAtCode(ctx *AtCodeContext) {}
+
 // EnterAtDesc is called when production atDesc is entered.
 func (s *BasegengineListener) EnterAtDesc(ctx *AtDescContext) {}
 

@@ -172,6 +172,10 @@ func (v *BasegengineVisitor) VisitAtId(ctx *AtIdContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BasegengineVisitor) VisitAtCode(ctx *AtCodeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BasegengineVisitor) VisitAtDesc(ctx *AtDescContext) interface{} {
 	return v.VisitChildren(ctx)
 }

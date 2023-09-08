@@ -16,6 +16,7 @@ func (cons *Constant) AcceptString(str string) error {
 }
 
 func (cons *Constant) Evaluate(dc *context.DataContext, Vars map[string]reflect.Value) (reflect.Value, error) {
+	//fmt.Println(cons.ConstantValue.Type().String())
 	return cons.ConstantValue, nil
 }
 

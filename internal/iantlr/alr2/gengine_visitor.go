@@ -131,6 +131,9 @@ type gengineVisitor interface {
 	// Visit a parse tree produced by gengineParser#atId.
 	VisitAtId(ctx *AtIdContext) interface{}
 
+	// Visit a parse tree produced by gengineParser#atCode.
+	VisitAtCode(ctx *AtCodeContext) interface{}
+
 	// Visit a parse tree produced by gengineParser#atDesc.
 	VisitAtDesc(ctx *AtDescContext) interface{}
 

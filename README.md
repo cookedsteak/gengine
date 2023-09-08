@@ -15,4 +15,4 @@ alias grun='java org.antlr.v4.gui.TestRig'
 
 ## generator
 
-antlr4 -Dlanguage=Go -visitor -o alr2 gengine.g4
+antlr4 -Dlanguage=Go -visitor -o alr2 gengine.g4 

@@ -5,23 +5,25 @@ import (
 	"fmt"
 	"reflect"
 
+	"github.com/shopspring/decimal"
+
 	"github.com/cookedsteak/gengine/context"
 )
 
 var TypeMap = map[string]string{
-	"int":     "int",
-	"int8":    "int8",
-	"int16":   "int16",
-	"int32":   "int32",
-	"int64":   "int64",
-	"uint":    "uint",
-	"uint8":   "uint8",
-	"uint16":  "uint16",
-	"uint32":  "uint32",
-	"uint64":  "uint64",
-	"float32": "float32",
-	"float64": "float64",
-	"decimal": "decimal",
+	"int":             "int",
+	"int8":            "int8",
+	"int16":           "int16",
+	"int32":           "int32",
+	"int64":           "int64",
+	"uint":            "uint",
+	"uint8":           "uint8",
+	"uint16":          "uint16",
+	"uint32":          "uint32",
+	"uint64":          "uint64",
+	"float32":         "float32",
+	"float64":         "float64",
+	"decimal.Decimal": "decimal.Decimal",
 }
 
 type Expression struct {
@@ -114,10 +116,10 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 		frv := rv //reflect.ValueOf(rv)
 
 		if lv.Kind() == reflect.Bool && rv.Kind() == reflect.Bool {
-			if e.LogicalOperator == "&&" {
+			if e.LogicalOperator == "&&" || e.LogicalOperator == "&" || e.LogicalOperator == "and" {
 				b = reflect.ValueOf(flv.Bool() && frv.Bool())
 			}
-			if e.LogicalOperator == "||" {
+			if e.LogicalOperator == "||" || e.LogicalOperator == "|" || e.LogicalOperator == "or" {
 				b = reflect.ValueOf(flv.Bool() || frv.Bool())
 			}
 		} else {
@@ -138,31 +140,32 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 			return reflect.ValueOf(nil), err
 		}
 
-		//
+		// 原值拷贝用于比较
 		flv := lv //reflect.ValueOf(lv)
 		frv := rv //reflect.ValueOf(rv)
 
 		//string compare
+		// 原值拷贝用于比较
 		tlv := lv //reflect.TypeOf(lv).String()
 		trv := rv //reflect.TypeOf(rv).String()
 		if tlv.Kind() == reflect.String && trv.Kind() == reflect.String {
 			switch e.ComparisonOperator {
-			case "==":
+			case "==", "eq":
 				b = reflect.ValueOf(flv.String() == frv.String())
 				break
-			case "!=":
+			case "!=", "ne":
 				b = reflect.ValueOf(flv.String() != frv.String())
 				break
-			case ">":
+			case ">", "gt":
 				b = reflect.ValueOf(flv.String() > frv.String())
 				break
-			case "<":
+			case "<", "lt":
 				b = reflect.ValueOf(flv.String() < frv.String())
 				break
-			case ">=":
+			case ">=", "ge":
 				b = reflect.ValueOf(flv.String() >= frv.String())
 				break
-			case "<=":
+			case "<=", "le":
 				b = reflect.ValueOf(flv.String() <= frv.String())
 				break
 			default:
@@ -172,52 +175,57 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 		}
 
 		//data compare
-		if l, ok1 := TypeMap[tlv.Kind().String()]; ok1 {
-			if r, ok2 := TypeMap[trv.Kind().String()]; ok2 {
-				var ll float64
+		//目前是decimal之间的compare
+		if l, ok1 := TypeMap[tlv.Type().String()]; ok1 {
+			if r, ok2 := TypeMap[trv.Type().String()]; ok2 {
+				var ll decimal.Decimal
 				switch l {
 				case "int", "int8", "int16", "int32", "int64":
-					ll = float64(flv.Int())
+					ll = decimal.NewFromInt(flv.Int())
 					break
 				case "uint", "uint8", "uint16", "uint32", "uint64":
-					ll = float64(flv.Uint())
+					ll = decimal.NewFromInt(int64(flv.Uint()))
 					break
 				case "float32", "float64":
-					ll = flv.Float()
+					ll = decimal.NewFromFloat(flv.Float())
+				case "decimal.Decimal":
+					ll = flv.Interface().(decimal.Decimal)
 					break
 				}
 
-				var rr float64
+				var rr decimal.Decimal
 				switch r {
 				case "int", "int8", "int16", "int32", "int64":
-					rr = float64(frv.Int())
+					rr = decimal.NewFromInt(frv.Int())
 					break
 				case "uint", "uint8", "uint16", "uint32", "uint64":
-					rr = float64(frv.Uint())
+					rr = decimal.NewFromInt(int64(frv.Uint()))
 					break
 				case "float32", "float64":
-					rr = frv.Float()
+					rr = decimal.NewFromFloat(frv.Float())
+				case "decimal.Decimal":
+					rr = frv.Interface().(decimal.Decimal)
 					break
 				}
 
 				switch e.ComparisonOperator {
-				case "==":
-					b = reflect.ValueOf(ll == rr)
+				case "==", "eq":
+					b = reflect.ValueOf(ll.Equal(rr))
 					break
-				case "!=":
-					b = reflect.ValueOf(ll != rr)
+				case "!=", "ne":
+					b = reflect.ValueOf(!ll.Equal(rr))
 					break
-				case ">":
-					b = reflect.ValueOf(ll > rr)
+				case ">", "gt":
+					b = reflect.ValueOf(ll.GreaterThan(rr))
 					break
-				case "<":
-					b = reflect.ValueOf(ll < rr)
+				case "<", "lt":
+					b = reflect.ValueOf(ll.LessThan(rr))
 					break
-				case ">=":
-					b = reflect.ValueOf(ll >= rr)
+				case ">=", "ge":
+					b = reflect.ValueOf(ll.GreaterThanOrEqual(rr))
 					break
-				case "<=":
-					b = reflect.ValueOf(ll <= rr)
+				case "<=", "le":
+					b = reflect.ValueOf(ll.LessThanOrEqual(rr))
 					break
 				default:
 					return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, Can't be recognized ComparisonOperator: %s", e.LineNum, e.Column, e.Code, e.ComparisonOperator))
@@ -228,10 +236,10 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 
 		if tlv.Kind() == reflect.Bool && trv.Kind() == reflect.Bool {
 			switch e.ComparisonOperator {
-			case "==":
+			case "==", "eq":
 				b = reflect.ValueOf(flv.Bool() == frv.Bool())
 				break
-			case "!=":
+			case "!=", "ne":
 				b = reflect.ValueOf(flv.Bool() != frv.Bool())
 				break
 			default:
