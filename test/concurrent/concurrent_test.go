@@ -54,7 +54,7 @@ func (u *User) Print(s string) {
 }
 
 func (u *User) Say() {
-	fmt.Println("hello world")
+	fmt.Println("hello啊")
 }
 
 func Hello() {

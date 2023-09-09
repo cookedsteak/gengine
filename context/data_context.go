@@ -381,7 +381,9 @@ func (dc *DataContext) SetValue(Vars map[string]reflect.Value, variable string, 
 	return errors.New(fmt.Sprintf("setValue not found \"%s\" error.", variable))
 }
 
-func (dc *DataContext) SetMapVarValue(Vars map[string]reflect.Value, mapVarName, mapVarStrkey, mapVarVarkey string, mapVarIntkey int64, setValue reflect.Value) error {
+func (dc *DataContext) SetMapVarValue(Vars map[string]reflect.Value,
+	mapVarName, mapVarStrkey, mapVarVarkey string,
+	mapVarIntkey int64, setValue reflect.Value) error {
 
 	value, e := dc.GetValue(Vars, mapVarName)
 	if e != nil {
@@ -465,6 +467,7 @@ func (dc *DataContext) SetMapVarValue(Vars map[string]reflect.Value, mapVarName,
 		}
 
 	} else {
+		// value 是把当前用户设置的var以map形式取出来了
 		newValue := value
 		valueType := newValue.Type().Elem()
 

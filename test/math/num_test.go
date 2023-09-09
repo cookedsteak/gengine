@@ -27,7 +27,7 @@ func Test_Num(t *testing.T) {
 	entity.Score = 100 + 12/3
 	entity.Height = 1.1234567890123456789
 	end
-`
+	`
 	entity := &Entity{Score: 0}
 
 	dataContext := context.NewDataContext()

@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"reflect"
 
+	"github.com/shopspring/decimal"
+
 	"github.com/cookedsteak/gengine/context"
 	"github.com/cookedsteak/gengine/internal/core"
 )
@@ -70,11 +72,14 @@ func (m *MapVar) Evaluate(dc *context.DataContext, Vars map[string]reflect.Value
 		}
 
 		if newValue.Kind() == reflect.Slice || newValue.Kind() == reflect.Array {
-
+			// 用内部变量承载的key，需要判断decimal
 			if len(m.Varkey) > 0 {
 				wantedKey, e := dc.GetValue(Vars, m.Varkey)
 				if e != nil {
 					return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, %+v", m.LineNum, m.Column, m.Code, e))
+				}
+				if wantedKey.Type().String() == "decimal.Decimal" {
+					return value.Elem().Index(int(wantedKey.Interface().(decimal.Decimal).IntPart())), nil
 				}
 				return value.Elem().Index(int(wantedKey.Int())), nil
 			}
@@ -92,7 +97,7 @@ func (m *MapVar) Evaluate(dc *context.DataContext, Vars map[string]reflect.Value
 
 	} else {
 		newValue = value
-
+		// todo 待验证此分支
 		if newValue.Kind() == reflect.Map {
 			keyType := newValue.Type().Key()
 
@@ -105,7 +110,6 @@ func (m *MapVar) Evaluate(dc *context.DataContext, Vars map[string]reflect.Value
 				if e != nil {
 					return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, %+v", m.LineNum, m.Column, m.Code, e))
 				}
-
 				mv := value.MapIndex(wantedKey)
 				if mv.IsValid() {
 					return mv, nil
@@ -142,6 +146,9 @@ func (m *MapVar) Evaluate(dc *context.DataContext, Vars map[string]reflect.Value
 				wantedKey, e := dc.GetValue(Vars, m.Varkey)
 				if e != nil {
 					return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, %+v", m.LineNum, m.Column, m.Code, e))
+				}
+				if wantedKey.Type().String() == "decimal.Decimal" {
+					return value.Index(int(wantedKey.Interface().(decimal.Decimal).IntPart())), nil
 				}
 				return value.Index(int(wantedKey.Int())), nil
 			}

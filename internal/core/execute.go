@@ -236,13 +236,15 @@ func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) er
 }
 
 const (
-	_int   = 1
-	_uint  = 2
-	_float = 3
+	_int     = 1
+	_uint    = 2
+	_float   = 3
+	_decimal = 4
 )
 
 /*
 number type exchange
+f是定义的注入函数的类型，根据入参个数，轮询参数并拿到参数类型
 */
 func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 	tf := f.Type()
@@ -251,6 +253,7 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 	}
 	plen := tf.NumIn()
 	for i := 0; i < plen; i++ {
+		// 这里选择预定义的参数的类型
 		switch tf.In(i).Kind() {
 		case reflect.Int:
 			tag := getNumType(params[i])
@@ -258,6 +261,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(int(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(int(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(int(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(int(params[i].Float()))
 			}
@@ -268,6 +273,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(int8(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(int8(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(int8(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(int8(params[i].Float()))
 			}
@@ -278,6 +285,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(int16(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(int16(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(int16(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(int16(params[i].Float()))
 			}
@@ -288,6 +297,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(int32(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(int32(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(int32(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(int32(params[i].Float()))
 			}
@@ -298,6 +309,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(params[i].Int())
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(int64(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(params[i].Interface().(decimal.Decimal).IntPart())
 			} else {
 				params[i] = reflect.ValueOf(int64(params[i].Float()))
 			}
@@ -308,6 +321,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(uint(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(uint(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(uint(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(uint(params[i].Float()))
 			}
@@ -318,6 +333,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(uint8(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(uint8(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(uint8(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(uint8(params[i].Float()))
 			}
@@ -328,6 +345,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(uint16(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(uint16(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(uint16(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(uint16(params[i].Float()))
 			}
@@ -338,6 +357,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(uint32(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(uint32(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(uint32(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(uint32(params[i].Float()))
 			}
@@ -348,6 +369,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(uint64(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(params[i].Uint())
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(uint64(params[i].Interface().(decimal.Decimal).IntPart()))
 			} else {
 				params[i] = reflect.ValueOf(uint64(params[i].Float()))
 			}
@@ -358,6 +381,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(float32(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(float32(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(float32(params[i].Interface().(decimal.Decimal).InexactFloat64()))
 			} else {
 				params[i] = reflect.ValueOf(float32(params[i].Float()))
 			}
@@ -368,6 +393,8 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 				params[i] = reflect.ValueOf(float64(params[i].Int()))
 			} else if tag == _uint {
 				params[i] = reflect.ValueOf(float64(params[i].Uint()))
+			} else if tag == _decimal {
+				params[i] = reflect.ValueOf(params[i].Interface().(decimal.Decimal).InexactFloat64())
 			} else {
 				params[i] = reflect.ValueOf(params[i].Float())
 			}
@@ -385,26 +412,36 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 	return params
 }
 
+// 获取入参的参数类型
 func getNumType(param reflect.Value) int {
-	ts := param.Kind().String()
+	ts := param.Type().String()
 	if strings.HasPrefix(ts, "int") {
 		return _int
 	}
-
 	if strings.HasPrefix(ts, "uint") {
 		return _uint
 	}
-
 	if strings.HasPrefix(ts, "float") {
 		return _float
+	}
+	if strings.HasPrefix(ts, "decimal") {
+		return _decimal
 	}
 
 	panic(fmt.Sprintf("it is not number type, type is %s !", ts))
 }
 
+// newValue: 变量实际类型
+// toKind: 需要的预定义类型
 func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
+	//fmt.Println(newValue.Type().String())
+	//fmt.Println(toKind.String())
 	if newValue.Kind() == toKind.Kind() {
 		return newValue, nil
+	}
+	// decimal的处理逻辑
+	if newValue.Type().String() == "decimal.Decimal" {
+		return ConvertDecimalToType(newValue, toKind)
 	}
 
 	switch toKind.Kind() {
@@ -434,6 +471,49 @@ func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value,
 		return reflect.ValueOf(float32(newValue.Float())), nil
 	case reflect.Float64:
 		return newValue, nil
+	}
+
+	return newValue, nil
+}
+
+func ConvertDecimalToType(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
+	tk := toKind.String()
+
+	if strings.HasPrefix(tk, "int") || strings.HasPrefix(tk, "uint") {
+		midValue := newValue.Interface().(decimal.Decimal).IntPart()
+		switch toKind.Kind() {
+		case reflect.Int:
+			return reflect.ValueOf(int(midValue)), nil
+		case reflect.Int8:
+			return reflect.ValueOf(int8(midValue)), nil
+		case reflect.Int16:
+			return reflect.ValueOf(int16(midValue)), nil
+		case reflect.Int32:
+			return reflect.ValueOf(int32(midValue)), nil
+		case reflect.Int64:
+			return reflect.ValueOf(midValue), nil
+
+		case reflect.Uint:
+			return reflect.ValueOf(uint(midValue)), nil
+		case reflect.Uint8:
+			return reflect.ValueOf(uint8(midValue)), nil
+		case reflect.Uint16:
+			return reflect.ValueOf(uint16(midValue)), nil
+		case reflect.Uint32:
+			return reflect.ValueOf(uint32(midValue)), nil
+		case reflect.Uint64:
+			return reflect.ValueOf(uint64(midValue)), nil
+		}
+	}
+
+	if strings.HasPrefix(tk, "float") {
+		midValue := newValue.Interface().(decimal.Decimal).InexactFloat64()
+		switch toKind.Kind() {
+		case reflect.Float32:
+			return reflect.ValueOf(float32(midValue)), nil
+		case reflect.Float64:
+			return reflect.ValueOf(midValue), nil
+		}
 	}
 
 	return newValue, nil

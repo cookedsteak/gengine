@@ -13,7 +13,7 @@ import (
 	"github.com/cookedsteak/gengine/engine"
 )
 
-func Test_pligin(t *testing.T) {
+func Test_plugin(t *testing.T) {
 
 	dir, err := os.Getwd()
 	if err != nil {

@@ -14,6 +14,7 @@ statement : ifStmt | functionCall | methodCall  | threeLevelCall | assignment | 
 concStatement : CONC LR_BRACE ( functionCall | methodCall | threeLevelCall | assignment )* RR_BRACE;
 
 expression : mathExpression
+            | expression comparisonOperator expression comparisonOperator expression
             | expression comparisonOperator expression
             | expression logicalOperator expression
             | notOperator ? expressionAtom
@@ -55,7 +56,7 @@ continueStmt:  CONTINUE;
 
 constant
     : booleanLiteral
-//    | integer
+    | integer
     | realLiteral
     | stringLiteral
     | atName
@@ -71,7 +72,7 @@ functionArgs
 
 integer : MINUS? INT;
 
-realLiteral : MINUS? REAL_LITERAL | MINUS? INT;
+realLiteral : MINUS? REAL_LITERAL;
 
 stringLiteral: DQUOTA_STRING ;
 
