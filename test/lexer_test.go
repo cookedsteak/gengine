@@ -1,10 +1,11 @@
 package test
 
 import (
+	"testing"
+
 	"github.com/cookedsteak/gengine/builder"
 	"github.com/cookedsteak/gengine/context"
 	"github.com/cookedsteak/gengine/engine"
-	"testing"
 )
 
 func Test_lexer(t *testing.T) {

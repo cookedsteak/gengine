@@ -29,4 +29,9 @@ $ alias grun='java org.antlr.v4.gui.TestRig'
 ```
 
 ## 生产代码命令
-antlr4 -Dlanguage=Go -visitor -o alr2 gengine.g4 
+antlr4 -Dlanguage=Go -encoding UTF-8 -visitor -o alr2 gengine.g4
+
+## 调试
+antlr gengine.g4 生成java代码
+compile ./gengine*.java 进行编译
+grun gengine
