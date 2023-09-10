@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func Test_conext(t *testing.T) {
+func Test_context(t *testing.T) {
 
 	var lock sync.Mutex
 	lock.Lock()

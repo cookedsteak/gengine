@@ -8,8 +8,7 @@ https://github.com/bilibili/gengine/wiki/
 ## 修改与添加的特性
 
 - [x] 添加逻辑运算符兼容：'&','|','and','or'
-- [x] 添加比较运算符兼容：'lt','gt','ge','le','eq','ne'
-- [x] 支持更高的精度类型(decimal)，并返回string类型
+- [x] 支持更高的精度类型(decimal)，并支持各种类型返回
 
 #### more...
 

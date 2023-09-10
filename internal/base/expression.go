@@ -150,22 +150,22 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 		trv := rv //reflect.TypeOf(rv).String()
 		if tlv.Kind() == reflect.String && trv.Kind() == reflect.String {
 			switch e.ComparisonOperator {
-			case "==", "eq":
+			case "==":
 				b = reflect.ValueOf(flv.String() == frv.String())
 				break
-			case "!=", "ne":
+			case "!=":
 				b = reflect.ValueOf(flv.String() != frv.String())
 				break
-			case ">", "gt":
+			case ">":
 				b = reflect.ValueOf(flv.String() > frv.String())
 				break
-			case "<", "lt":
+			case "<":
 				b = reflect.ValueOf(flv.String() < frv.String())
 				break
-			case ">=", "ge":
+			case ">=":
 				b = reflect.ValueOf(flv.String() >= frv.String())
 				break
-			case "<=", "le":
+			case "<=":
 				b = reflect.ValueOf(flv.String() <= frv.String())
 				break
 			default:
@@ -209,22 +209,22 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 				}
 
 				switch e.ComparisonOperator {
-				case "==", "eq":
+				case "==":
 					b = reflect.ValueOf(ll.Equal(rr))
 					break
-				case "!=", "ne":
+				case "!=":
 					b = reflect.ValueOf(!ll.Equal(rr))
 					break
-				case ">", "gt":
+				case ">":
 					b = reflect.ValueOf(ll.GreaterThan(rr))
 					break
-				case "<", "lt":
+				case "<":
 					b = reflect.ValueOf(ll.LessThan(rr))
 					break
-				case ">=", "ge":
+				case ">=":
 					b = reflect.ValueOf(ll.GreaterThanOrEqual(rr))
 					break
-				case "<=", "le":
+				case "<=":
 					b = reflect.ValueOf(ll.LessThanOrEqual(rr))
 					break
 				default:
@@ -236,10 +236,10 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 
 		if tlv.Kind() == reflect.Bool && trv.Kind() == reflect.Bool {
 			switch e.ComparisonOperator {
-			case "==", "eq":
+			case "==":
 				b = reflect.ValueOf(flv.Bool() == frv.Bool())
 				break
-			case "!=", "ne":
+			case "!=":
 				b = reflect.ValueOf(flv.Bool() != frv.Bool())
 				break
 			default:

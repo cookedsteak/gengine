@@ -2,11 +2,12 @@ package test
 
 import (
 	"fmt"
+	"testing"
+	"time"
+
 	"github.com/cookedsteak/gengine/builder"
 	"github.com/cookedsteak/gengine/context"
 	"github.com/cookedsteak/gengine/engine"
-	"testing"
-	"time"
 )
 
 type User struct {
@@ -63,6 +64,10 @@ begin
 			User.Name = "yyyy"
 		}
 		
+		if true or false {
+			Sout("niubi")
+		}
+
 		if true {
 			Sout("if true ")
 		}

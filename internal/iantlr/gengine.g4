@@ -89,7 +89,7 @@ mathPmOperator : PLUS | MINUS ;
 
 mathMdOperator : MUL | DIV ;
 
-comparisonOperator : GT | LT | GTE | LTE | EQUALS | NOTEQUALS | GT_STR | LT_STR | GTE_STR | LTE_STR | EQUALS_STR | NOTEQUALS_STR ;
+comparisonOperator : GT | LT | GTE | LTE | EQUALS | NOTEQUALS;
 
 logicalOperator : AND | OR | AND_STR | OR_STR | AND_SINGLE | OR_SINGLE ;
 
@@ -177,12 +177,6 @@ GTE                         : '>=' ;
 LTE                         : '<=' ;
 NOTEQUALS                   : '!=' ;
 NOT                         : '!' ;
-EQUALS_STR                  : 'eq' ;
-GT_STR                      : 'gt' ;
-LT_STR                      : 'lt' ;
-GTE_STR                     : 'ge' ;
-LTE_STR                     : 'le' ;
-NOTEQUALS_STR               : 'ne' ;
 
 ASSIGN                      : ':=' ;
 SET                         : '=';
