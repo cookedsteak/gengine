@@ -62,7 +62,7 @@ func Test_m1(t *testing.T) {
 	MS := &MS{
 		MII: &map[int]int{-1: 1},
 		MSI: map[string]int{"hello": 1},
-		MIS: map[int]string{1: "helwo"},
+		MIS: map[int]string{1: "hello a"},
 	}
 
 	var MM map[int]int

@@ -14,7 +14,6 @@ statement : ifStmt | functionCall | methodCall  | threeLevelCall | assignment | 
 concStatement : CONC LR_BRACE ( functionCall | methodCall | threeLevelCall | assignment )* RR_BRACE;
 
 expression : mathExpression
-            | expression comparisonOperator expression comparisonOperator expression
             | expression comparisonOperator expression
             | expression logicalOperator expression
             | notOperator ? expressionAtom
