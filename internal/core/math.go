@@ -75,6 +75,14 @@ func MakeDecimalByType(val reflect.Value) (decimal.Decimal, string, error) {
 	case "decimal.Decimal":
 		ret = val.Interface().(decimal.Decimal)
 		break
+	case "string":
+		//floatReg := `[+\-]?\d+\.*\d*[eE]?[+\-]?\d*`
+		var err error
+		ret, err = decimal.NewFromString(val.String())
+		if err != nil {
+			return decimal.Decimal{}, t, errors.New("value can not convert into decimal")
+		}
+		break
 	default:
 		return decimal.Decimal{}, t, errors.New("value can not convert into decimal")
 	}

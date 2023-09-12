@@ -104,7 +104,7 @@ func Test_Decimal(t *testing.T) {
 	decimalRule := `
 	rule "decimal rule" "rule desc"
 	begin
-	a = 1.12345678901234567890+1.1
+	a = "1.12345678901234567890"+1.1
 	b = "gogo" + "gaga"
 	entity.Height = a
 	entity.Name = b
