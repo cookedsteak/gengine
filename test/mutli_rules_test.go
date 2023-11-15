@@ -104,7 +104,7 @@ func Test_Write(t *testing.T) {
 
 	cont := buffer.String()
 
-	fileName := "/tmp/file"
+	fileName := "./tmp/file"
 	err := ioutil.WriteFile(fileName, []byte(cont), 0664)
 	if err != nil {
 		panic(err)

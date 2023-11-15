@@ -1,0 +1,900 @@
+rule "姓名测试0" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试1" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试2" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试3" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试4" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试5" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试6" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试7" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试8" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试9" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试10" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试11" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试12" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试13" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试14" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试15" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试16" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试17" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试18" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试19" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试20" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试21" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试22" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试23" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试24" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试25" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试26" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试27" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试28" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试29" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试30" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试31" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试32" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试33" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试34" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试35" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试36" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试37" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试38" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试39" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试40" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试41" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试42" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试43" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试44" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试45" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试46" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试47" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试48" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试49" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试50" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试51" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试52" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试53" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试54" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试55" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试56" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试57" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试58" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试59" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试60" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试61" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试62" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试63" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试64" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试65" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试66" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试67" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试68" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试69" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试70" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试71" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试72" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试73" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试74" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试75" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试76" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试77" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试78" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试79" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试80" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试81" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试82" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试83" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试84" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试85" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试86" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试87" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试88" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试89" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试90" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试91" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试92" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试93" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试94" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试95" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试96" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试97" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试98" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end
+rule "姓名测试99" "我可以的"  salience 0
+		begin
+		if 7 == User.GetNum(7){
+			User.Age = User.GetNum(89767) + 10000000
+			User.Print("6666")
+		}else{
+			User.Name = "yyyy"
+		}
+	    end

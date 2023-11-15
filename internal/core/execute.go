@@ -172,7 +172,9 @@ func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value)
 	return nil
 }
 
-// set single value
+// SetSingleValue 单值设置
+// @param obj是变量声明时候的默认类型
+// @param value是规则表达式中赋值的类型（会被转换成decimal）
 func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) error {
 	if obj.Kind() == reflect.Ptr {
 		if value.Kind() == reflect.Ptr {
@@ -186,7 +188,8 @@ func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) er
 			obj.Elem().Set(value)
 			return nil
 		} else {
-			valueKindStr := valueKind.String()
+			//valueKindStr := valueKind.String()
+			valueKindStr := value.Type().String()
 			switch objKind {
 			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 				if strings.HasPrefix(valueKindStr, "int") {
@@ -199,6 +202,10 @@ func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) er
 				}
 				if strings.HasPrefix(valueKindStr, "uint") {
 					obj.Elem().SetInt(int64(value.Uint()))
+					return nil
+				}
+				if strings.HasPrefix(valueKindStr, "decimal") {
+					obj.Elem().SetInt(value.Interface().(decimal.Decimal).IntPart())
 					return nil
 				}
 				break
@@ -215,6 +222,10 @@ func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) er
 					obj.Elem().SetUint(value.Uint())
 					return nil
 				}
+				if strings.HasPrefix(valueKindStr, "decimal") {
+					obj.Elem().SetUint(uint64(value.Interface().(decimal.Decimal).IntPart()))
+					return nil
+				}
 				break
 			case reflect.Float32, reflect.Float64:
 				if strings.HasPrefix(valueKindStr, "int") {
@@ -227,6 +238,10 @@ func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) er
 				}
 				if strings.HasPrefix(valueKindStr, "uint") {
 					obj.Elem().SetFloat(float64(value.Uint()))
+					return nil
+				}
+				if strings.HasPrefix(valueKindStr, "decimal") {
+					obj.Elem().SetFloat(value.Interface().(decimal.Decimal).InexactFloat64())
 					return nil
 				}
 				break
@@ -471,8 +486,8 @@ func getNumType(param reflect.Value) int {
 // newValue: 真实入参类型
 // toKind: 期望的入参类型
 func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
-	fmt.Println(fmt.Sprintf("入参类型：%s", newValue.Kind().String()))
-	fmt.Println(fmt.Sprintf("期望类型：%s", toKind.Kind().String()))
+	//fmt.Println(fmt.Sprintf("入参类型：%s", newValue.Kind().String()))
+	//fmt.Println(fmt.Sprintf("期望类型：%s", toKind.Kind().String()))
 	if newValue.Kind() == toKind.Kind() {
 		return newValue, nil
 	}

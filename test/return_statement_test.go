@@ -3,6 +3,8 @@ package test
 import (
 	"testing"
 
+	"github.com/shopspring/decimal"
+
 	"github.com/cookedsteak/gengine/builder"
 	"github.com/cookedsteak/gengine/context"
 	"github.com/cookedsteak/gengine/engine"
@@ -102,7 +104,7 @@ func Test_return_float64(t *testing.T) {
 
 	//返回float64
 	r := returnResultMap[ruleName]
-	f := r.(float64)
+	f := r.(decimal.Decimal).InexactFloat64()
 	println("return--->", f)
 }
 
@@ -170,7 +172,7 @@ func Test_return_logic_expression_int64(t *testing.T) {
 
 	//返回int64值
 	r := returnResultMap[ruleName]
-	i := r.(int64)
+	i := r.(decimal.Decimal).IntPart()
 	println("return--->", i)
 }
 
@@ -187,7 +189,7 @@ func Test_return_variable_int64(t *testing.T) {
 	returnResultMap := framework(rule)
 
 	r := returnResultMap[ruleName]
-	i := r.(int64)
+	i := r.(decimal.Decimal).IntPart()
 	println("return--->", i)
 }
 

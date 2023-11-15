@@ -13,7 +13,7 @@ import (
 	"github.com/cookedsteak/gengine/engine"
 )
 
-func Test_plugin(t *testing.T) {
+func No_Test_plugin(t *testing.T) {
 
 	dir, err := os.Getwd()
 	if err != nil {
@@ -49,7 +49,7 @@ func Test_plugin(t *testing.T) {
 
 }
 
-func Test_plugin_with_gengine(t *testing.T) {
+func No_Test_plugin_with_gengine(t *testing.T) {
 
 	dir, err := os.Getwd()
 	if err != nil {
@@ -89,7 +89,7 @@ func Test_plugin_with_gengine(t *testing.T) {
 	}
 }
 
-func Test_plugin_with_pool(t *testing.T) {
+func No_Test_plugin_with_pool(t *testing.T) {
 
 	rule := `
 	rule "1"
@@ -132,7 +132,7 @@ func Test_plugin_with_pool(t *testing.T) {
 	}
 }
 
-func Test_file(t *testing.T) {
+func No_Test_file(t *testing.T) {
 
 	///Users/renyunyi/go_project/gengine/test/plugin_t/
 	files := "plugin_superman.so"

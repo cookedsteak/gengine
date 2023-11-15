@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/cookedsteak/gengine/builder"
@@ -21,7 +22,7 @@ func Println(as ...string) {
 	}
 }
 
-func Test_multi_input_(t *testing.T) {
+func Test_multi_input(t *testing.T) {
 
 	dataContext := context.NewDataContext()
 	//inject struct
@@ -44,4 +45,5 @@ func Test_multi_input_(t *testing.T) {
 	if e2 != nil {
 		panic(e2)
 	}
+	fmt.Println("ok")
 }
