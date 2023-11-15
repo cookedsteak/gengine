@@ -19,6 +19,7 @@ type Entity struct {
 	Height interface{}
 	Name   string
 	Comp   string
+	Equal  bool
 }
 
 func Test_Num(t *testing.T) {
@@ -105,21 +106,26 @@ func Test_Decimal(t *testing.T) {
 	decimalRule := `
 	rule "decimal rule" "rule desc"
 	begin
-	a = "1.12345678901234567890"+1.1
+	x = a + 1.1
 	b = "gogo" + "gaga"
-	c = "1.1234567890123456789"
-	entity.Height = a
+	c = 1.1234567890123456789
+	entity.Height = a + 1.1
 	entity.Name = b
 	entity.Comp = "one"
 	if (c<2) {
 		entity.Comp = "two"
 	}
-	return (a==2.2234567890123456789) 
+	entity.Equal = (d=="3306")
+	return (x==2.2234567890123456789) 
 	end
 	`
 	entity := &Entity{Score: 0}
 	dataContext := context.NewDataContext()
 	dataContext.Add("entity", entity)
+	dataContext.Add("println", fmt.Println)
+	a, _ := decimal.NewFromString("1.12345678901234567890")
+	dataContext.Add("a", a)
+	dataContext.Add("d", "3306")
 
 	//init rule engine
 	ruleBuilder := builder.NewRuleBuilder(dataContext)
@@ -135,7 +141,9 @@ func Test_Decimal(t *testing.T) {
 	println(entity.Height.(decimal.Decimal).String())
 	println(entity.Name)
 	println(entity.Comp)
+	println(entity.Equal)
+	fmt.Printf("%v", resMap)
 	assert.Equal(t, "gogogaga", entity.Name, "name结果")
 	assert.Equal(t, "two", entity.Comp, "comp结果")
-	fmt.Printf("%v", resMap)
+	assert.Equal(t, true, resMap["decimal rule"], "结果为true")
 }

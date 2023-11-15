@@ -9,7 +9,8 @@ https://github.com/bilibili/gengine/wiki/
 ## 修改与添加的特性
 
 - [x] 添加逻辑运算符兼容：'&','|','and','or'
-- [x] 支持更高的精度类型(decimal)，并支持各种类型返回
+- [x] 支持更高的精度类型(decimal)，默认情况下，int与float类型的参数都会被内部转换成decimal进行计算与比较，
+      并支持各种类型返回
 
 #### more...
 
