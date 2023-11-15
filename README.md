@@ -1,6 +1,7 @@
 ## gengine
 本fork仓库，修复了原gengine出现的问题，以及添加了一些使用过程中需要的特性。
-请随意取用，有问题可联系vx:cookedsteak
+
+请随意取用，有问题可联系 <b>vx:cookedsteak</b>
 
 ## 原项目文档
 https://github.com/bilibili/gengine/wiki/
