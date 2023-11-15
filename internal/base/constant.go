@@ -2,6 +2,9 @@ package base
 
 import (
 	"reflect"
+	"regexp"
+
+	"github.com/shopspring/decimal"
 
 	"github.com/cookedsteak/gengine/context"
 )
@@ -17,6 +20,16 @@ func (cons *Constant) AcceptString(str string) error {
 
 func (cons *Constant) Evaluate(dc *context.DataContext, Vars map[string]reflect.Value) (reflect.Value, error) {
 	//fmt.Println(cons.ConstantValue.Type().String())
+	if cons.ConstantValue.Type().String() == "string" {
+		floatReg := `^[+\-]?\d+\.*\d*[eE]?[+\-]?\d*$`
+		if ok, _ := regexp.MatchString(floatReg, cons.ConstantValue.String()); ok {
+			res, err := decimal.NewFromString(cons.ConstantValue.String())
+			if err != nil {
+				return cons.ConstantValue, err
+			}
+			return reflect.ValueOf(res), nil
+		}
+	}
 	return cons.ConstantValue, nil
 }
 

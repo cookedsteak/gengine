@@ -18,6 +18,7 @@ type Entity struct {
 	Score  int32
 	Height interface{}
 	Name   string
+	Comp   string
 }
 
 func Test_Num(t *testing.T) {
@@ -106,8 +107,13 @@ func Test_Decimal(t *testing.T) {
 	begin
 	a = "1.12345678901234567890"+1.1
 	b = "gogo" + "gaga"
+	c = "1.1234567890123456789"
 	entity.Height = a
 	entity.Name = b
+	entity.Comp = "one"
+	if (c<2) {
+		entity.Comp = "two"
+	}
 	return (a==2.2234567890123456789) 
 	end
 	`
@@ -128,5 +134,8 @@ func Test_Decimal(t *testing.T) {
 	resMap, err := eng.GetRulesResultMap()
 	println(entity.Height.(decimal.Decimal).String())
 	println(entity.Name)
+	println(entity.Comp)
+	assert.Equal(t, "gogogaga", entity.Name, "name结果")
+	assert.Equal(t, "two", entity.Comp, "comp结果")
 	fmt.Printf("%v", resMap)
 }

@@ -188,6 +188,7 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 					break
 				case "float32", "float64":
 					ll = decimal.NewFromFloat(flv.Float())
+					break
 				case "decimal.Decimal":
 					ll = flv.Interface().(decimal.Decimal)
 					break
@@ -203,6 +204,7 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 					break
 				case "float32", "float64":
 					rr = decimal.NewFromFloat(frv.Float())
+					break
 				case "decimal.Decimal":
 					rr = frv.Interface().(decimal.Decimal)
 					break

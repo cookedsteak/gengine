@@ -14,16 +14,22 @@ func Test_input_array(t *testing.T) {
 	var rule = `
 rule "test" "test" 
 begin
-	if isNil(InputAndResult.Result["tenant_id"]) {
-       InputAndResult.AddStringArray("data",InputAndResult.GetSlice("123","234"))
-    }
+	InputAndResult.GetSlice("12","23")
+	InputAndResult.AddStringArray("arr",paramArray,11,12,13)
+	//if isNil(InputAndResult.Result["tenant_id"]) {
+    //   InputAndResult.AddStringArray("data",InputAndResult.GetSlice("123","234"))
+    //}
 end
 `
 
 	dataContext := context.NewDataContext()
 	//init rule engine
-	InputAndResult := &InputAndResult{Result: make(map[string][]string)}
+	InputAndResult := &InputAndResult{
+		Result:  make(map[string][]string),
+		Options: make(map[string]interface{}),
+	}
 	dataContext.Add("InputAndResult", InputAndResult)
+	dataContext.Add("paramArray", []string{"a", "b", "c"})
 
 	ruleBuilder := builder.NewRuleBuilder(dataContext)
 
@@ -42,15 +48,18 @@ end
 
 	//输出在规则中输入的内容
 	println(fmt.Sprintf("%+v", InputAndResult.Result["data"]))
+	println(fmt.Sprintf("%+v", InputAndResult.Result["arr"]))
 
 }
 
 type InputAndResult struct {
-	Result map[string][]string
+	Result  map[string][]string
+	Options map[string]interface{}
 }
 
-func (input *InputAndResult) AddStringArray(key string, value []string) {
+func (input *InputAndResult) AddStringArray(key string, value []string, opt ...int) {
 	input.Result[key] = value
+	input.Options["opt"] = opt
 }
 
 func (input *InputAndResult) GetSlice(vs ...string) []string {

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"runtime"
 	"strings"
 
 	"github.com/shopspring/decimal"
@@ -17,7 +18,12 @@ func InvokeFunction(obj reflect.Value, methodName string, parameters []reflect.V
 		return reflect.ValueOf(nil), errors.New(fmt.Sprintf("NOT FOUND Function: %s", methodName))
 	}
 
+	//fmt.Println(parameters[0].String())
+	//fmt.Println(parameters[1].String())
 	params := ParamsTypeChange(fun, parameters)
+	//for _, v := range params {
+	//	fmt.Println("调用的参数类型为：", v.Type().String(), reflect.ValueOf(v))
+	//}
 	rs := fun.Call(params)
 	raw, e := GetRawTypeValue(rs)
 	if e != nil {
@@ -27,7 +33,7 @@ func InvokeFunction(obj reflect.Value, methodName string, parameters []reflect.V
 }
 
 /*
-*
+*  todo 多返回值修改如下函数
 if want to support multi return ,change this method implements
 */
 func GetRawTypeValue(rs []reflect.Value) (reflect.Value, error) {
@@ -49,11 +55,9 @@ func GetStructAttributeValue(obj reflect.Value, fieldName string) (reflect.Value
 	return attrVal, nil
 }
 
-/*
-*
-set field value
-value 就是右表达式的值，即可能是decimal
-*/
+// SetAttributeValue
+// set field value
+// value 就是右表达式的值，可能是decimal类型
 func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value) error {
 	field := reflect.ValueOf(nil)
 	objType := obj.Type()
@@ -170,7 +174,6 @@ func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value)
 
 // set single value
 func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) error {
-
 	if obj.Kind() == reflect.Ptr {
 		if value.Kind() == reflect.Ptr {
 			//both ptr
@@ -242,19 +245,49 @@ const (
 	_decimal = 4
 )
 
-/*
-number type exchange
-f是定义的注入函数的类型，根据入参个数，轮询参数并拿到参数类型
-*/
+// ParamsTypeChange
+// 自定义算子函数入参的数据类型转换
+// @param f是定义的注入函数反射值，可以直接调用
+// @param params 是入参
 func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
+	// 函数的类型
 	tf := f.Type()
 	if tf.Kind() == reflect.Ptr {
 		tf = tf.Elem()
 	}
-	plen := tf.NumIn()
-	for i := 0; i < plen; i++ {
+	pLen := tf.NumIn() // 函数期望参数的数量
+	for i := 0; i < pLen; i++ {
 		// 这里选择预定义的参数的类型
 		switch tf.In(i).Kind() {
+		// 参数可能是"123"数字字符，但是底层解析为了decimal，所以需要再转换一下
+		case reflect.Slice: // 所期望的是slice
+			var err error
+			// 这里slice会有两种情况
+			// 1、一种是期望参数本身就应该是slice
+			// 2、另一种可能，参数是任意数量参数 (...xx)
+			if params[i].Kind() != reflect.Slice && params[i].Kind() != reflect.Array { // 任意数量参数
+				// 从当前参数开始，后面的参数都要做同类型的转换
+				for pk := i; pk < len(params); pk++ {
+					params[pk], err = GetWantedValue(params[pk], tf.In(i).Elem()) // In获取参数类型，Elem获取切片参数中的元素类型
+					if err != nil {
+						fmt.Println(err.Error())
+						continue
+					}
+				}
+			} else {
+				// 正常slice类型
+				params[i], err = GetWantedValue(params[i], tf.In(i).Elem())
+				if err != nil {
+					fmt.Println(err.Error())
+					continue
+				}
+			}
+			break
+		case reflect.String:
+			if params[i].Type().String() == "decimal.Decimal" {
+				params[i] = reflect.ValueOf(params[i].Interface().(decimal.Decimal).String())
+			}
+			break
 		case reflect.Int:
 			tag := getNumType(params[i])
 			if tag == _int {
@@ -402,6 +435,10 @@ func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
 		case reflect.Ptr:
 			break
 		case reflect.Interface:
+			fmt.Println(tf.In(i).Kind().String())
+			fmt.Println("func params is interface")
+			dd := params[i].Type().String()
+			fmt.Println(dd)
 			if !reflect.ValueOf(params[i]).IsValid() {
 				params[i] = reflect.New(tf.In(i))
 			}
@@ -431,11 +468,11 @@ func getNumType(param reflect.Value) int {
 	panic(fmt.Sprintf("it is not number type, type is %s !", ts))
 }
 
-// newValue: 变量实际类型
-// toKind: 需要的预定义类型
+// newValue: 真实入参类型
+// toKind: 期望的入参类型
 func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
-	//fmt.Println(newValue.Type().String())
-	//fmt.Println(toKind.String())
+	fmt.Println(fmt.Sprintf("入参类型：%s", newValue.Kind().String()))
+	fmt.Println(fmt.Sprintf("期望类型：%s", toKind.Kind().String()))
 	if newValue.Kind() == toKind.Kind() {
 		return newValue, nil
 	}
@@ -476,8 +513,15 @@ func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value,
 	return newValue, nil
 }
 
+// newValue 入参类型
+// toKind 期望类型
 func ConvertDecimalToType(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
 	tk := toKind.String()
+
+	if tk == "string" {
+		midValue := newValue.Interface().(decimal.Decimal).String()
+		return reflect.ValueOf(midValue), nil
+	}
 
 	if strings.HasPrefix(tk, "int") || strings.HasPrefix(tk, "uint") {
 		midValue := newValue.Interface().(decimal.Decimal).IntPart()
@@ -517,4 +561,8 @@ func ConvertDecimalToType(newValue reflect.Value, toKind reflect.Type) (reflect.
 	}
 
 	return newValue, nil
+}
+
+func GetFunctionName(i reflect.Value) string {
+	return runtime.FuncForPC(i.Pointer()).Name()
 }

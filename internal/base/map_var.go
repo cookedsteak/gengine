@@ -40,7 +40,7 @@ func (m *MapVar) Evaluate(dc *context.DataContext, Vars map[string]reflect.Value
 				if e != nil {
 					return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, %+v", m.LineNum, m.Column, m.Code, e))
 				}
-
+				//fmt.Println(wantedKey.Type().String())
 				mv := value.Elem().MapIndex(wantedKey)
 				if mv.IsValid() {
 					return mv, nil
