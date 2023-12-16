@@ -170,3 +170,23 @@ func Test_pool_dag_run(t *testing.T) {
 		panic(e)
 	}
 }
+
+func Benchmark_pool_run(t *testing.B) {
+	apis := make(map[string]interface{})
+	apis["print"] = hello
+
+	pool, e1 := engine.NewGenginePool(2, 10, 1, dag_rules, apis)
+	if e1 != nil {
+		panic(e1)
+	}
+
+	names := makeDAG()
+	for n := 0; n < t.N; n++ {
+		go func() {
+			e, _ := pool.ExecuteDAGModel(names, make(map[string]interface{}))
+			if e != nil {
+				panic(e)
+			}
+		}()
+	}
+}

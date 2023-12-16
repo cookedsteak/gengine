@@ -11,10 +11,6 @@ import (
 )
 
 func InvokeFunction(obj reflect.Value, methodName string, parameters []reflect.Value) (reflect.Value, error) {
-	defer func() {
-		fmt.Println("InvokeFunction end")
-	}()
-	fmt.Println("InvokeFunction start")
 	objVal := obj
 
 	fun := objVal.MethodByName(methodName)
@@ -63,10 +59,6 @@ func GetStructAttributeValue(obj reflect.Value, fieldName string) (reflect.Value
 // set field value
 // value 就是右表达式的值，可能是decimal类型
 func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value) error {
-	defer func() {
-		fmt.Println("SetAttributeValue end")
-	}()
-	fmt.Println("SetAttributeValue start")
 	field := reflect.ValueOf(nil)
 	objType := obj.Type()
 	objVal := obj
@@ -184,10 +176,6 @@ func SetAttributeValue(obj reflect.Value, fieldName string, value reflect.Value)
 // @param obj是变量声明时候的默认类型
 // @param value是规则表达式中赋值的类型（会被转换成decimal）
 func SetSingleValue(obj reflect.Value, fieldName string, value reflect.Value) error {
-	defer func() {
-		fmt.Println("SetSingleValue end")
-	}()
-	fmt.Println("SetSingleValue start")
 	if obj.Kind() == reflect.Ptr {
 		if value.Kind() == reflect.Ptr {
 			//both ptr
@@ -277,10 +265,6 @@ const (
 // @param f是定义的注入函数反射值，可以直接调用
 // @param params 是入参
 func ParamsTypeChange(f reflect.Value, params []reflect.Value) []reflect.Value {
-	defer func() {
-		fmt.Println("ParamsTypeChange end")
-	}()
-	fmt.Println("ParamsTypeChange start")
 	// 函数的类型
 	tf := f.Type()
 	if tf.Kind() == reflect.Ptr {
@@ -502,10 +486,6 @@ func getNumType(param reflect.Value) int {
 // newValue: 真实入参类型
 // toKind: 期望的入参类型
 func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
-	defer func() {
-		fmt.Println("GetWantedValue end")
-	}()
-	fmt.Println("GetWantedValue start")
 	fmt.Println(fmt.Sprintf("入参类型：%s", newValue.Kind().String()))
 	fmt.Println(fmt.Sprintf("期望类型：%s", toKind.Kind().String()))
 	if newValue.Kind() == toKind.Kind() {
@@ -551,10 +531,6 @@ func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value,
 // newValue 入参类型
 // toKind 期望类型
 func ConvertDecimalToType(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
-	defer func() {
-		fmt.Println("ConvertDecimalToType end")
-	}()
-	fmt.Println("ConvertDecimalToType start")
 	tk := toKind.String()
 	if tk == "string" {
 		midValue := newValue.Interface().(decimal.Decimal).String()
