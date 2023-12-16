@@ -1449,7 +1449,7 @@ func (g *Gengine) ExecuteDAGModel(rb *builder.RuleBuilder, dag [][]string) error
 		return nil
 	}
 
-	var errLock sync.Mutex
+	//var errLock sync.Mutex // todo add
 	var eMsg []string
 
 	//row
@@ -1469,18 +1469,21 @@ func (g *Gengine) ExecuteDAGModel(rb *builder.RuleBuilder, dag [][]string) error
 			mwg.Add(len(rules))
 			for _, r := range rules {
 				rr := r
-				go func() {
-					v, e, bx := rr.Execute(rb.Dc)
-					if bx {
-						g.addResult(rr.RuleName, v)
-					}
-					if e != nil {
-						errLock.Lock()
-						eMsg = append(eMsg, fmt.Sprintf("rule: \"%s\" executed, error:\n %+v ", rr.RuleName, e))
-						errLock.Unlock()
-					}
-					mwg.Done()
-				}()
+				// todo test
+				g.addResult(rr.RuleName, "")
+				//go func() {
+				//	v, e, bx := rr.Execute(rb.Dc)
+				//	if bx {
+				//		g.addResult(rr.RuleName, v)
+				//	}
+				//	if e != nil {
+				//		errLock.Lock()
+				//		eMsg = append(eMsg, fmt.Sprintf("rule: \"%s\" executed, error:\n %+v ", rr.RuleName, e))
+				//		errLock.Unlock()
+				//	}
+				//	mwg.Done()
+				//}()
+				mwg.Done() // todo add
 			}
 			mwg.Wait()
 		}

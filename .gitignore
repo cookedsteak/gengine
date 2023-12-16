@@ -2,3 +2,4 @@
 vendor
 *.so
 go.sum
+.DS_Store
