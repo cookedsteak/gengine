@@ -90,7 +90,6 @@ it used in this scene:
 where some high priority rules execute finished, you don't want to execute to the last rules, you can use sTag to control it out of gengine
 */
 func (g *Gengine) ExecuteWithStopTagDirect(rb *builder.RuleBuilder, b bool, sTag *Stag) error {
-
 	//check rb
 	if rb == nil {
 		return errors.New("ruleBuilder is nil")
