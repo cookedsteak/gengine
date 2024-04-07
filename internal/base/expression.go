@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"regexp"
 
 	"github.com/shopspring/decimal"
 
@@ -114,13 +115,26 @@ func (e *Expression) Evaluate(dc *context.DataContext, Vars map[string]reflect.V
 		//
 		flv := lv //reflect.ValueOf(lv)
 		frv := rv //reflect.ValueOf(rv)
-
+		// 左右值为bool类型，用逻辑符比较
 		if lv.Kind() == reflect.Bool && rv.Kind() == reflect.Bool {
-			if e.LogicalOperator == "&&" || e.LogicalOperator == "&" || e.LogicalOperator == "and" {
+			if e.LogicalOperator == "&&" || e.LogicalOperator == "&" || e.LogicalOperator == " and " {
 				b = reflect.ValueOf(flv.Bool() && frv.Bool())
 			}
-			if e.LogicalOperator == "||" || e.LogicalOperator == "|" || e.LogicalOperator == "or" {
+			if e.LogicalOperator == "||" || e.LogicalOperator == "|" || e.LogicalOperator == " or " {
 				b = reflect.ValueOf(flv.Bool() || frv.Bool())
+			}
+		} else if lv.Kind() == reflect.String && rv.Kind() == reflect.String {
+			switch e.LogicalOperator {
+			case " sin ":
+				b = reflect.ValueOf(sinOp(flv.String(), frv.String()))
+			case " snin ":
+				b = reflect.ValueOf(sninOp(flv.String(), frv.String()))
+			case " sinc ":
+				b = reflect.ValueOf(sincOp(flv.String(), frv.String()))
+			case " sninc ":
+				b = reflect.ValueOf(snincOp(flv.String(), frv.String()))
+			default:
+				return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, LogicalOperator [%s] is not support:\n", e.LineNum, e.Column, e.Code, e.LogicalOperator))
 			}
 		} else {
 			return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, || or && can't be used between %s and %s:\n", e.LineNum, e.Column, e.Code, flv.Kind().String(), frv.Kind().String()))
@@ -279,4 +293,32 @@ LAST:
 		}
 	}
 	return reflect.ValueOf(nil), errors.New(fmt.Sprintf("line %d, column %d, code: %s, evaluate Expression err!", e.LineNum, e.Column, e.Code))
+}
+
+// string in
+func sinOp(s, dst string) bool {
+	reg := fmt.Sprintf("^%s[^\\w]+|[^\\w]+%s[^\\w]+|[^\\w]+%s$|^%s$", s, s, s, s)
+	re := regexp.MustCompile(reg)
+	return re.MatchString(dst)
+}
+
+// string not in
+func sninOp(s, dst string) bool {
+	reg := fmt.Sprintf("^%s[^\\w]+|[^\\w]+%s[^\\w]+|[^\\w]+%s$|^%s$", s, s, s, s)
+	re := regexp.MustCompile(reg)
+	return !re.MatchString(dst)
+}
+
+// string include
+func sincOp(s, substr string) bool {
+	reg := fmt.Sprintf("^%s[^\\w]+|[^\\w]+%s[^\\w]+|[^\\w]+%s$|^%s$", substr, substr, substr, substr)
+	re := regexp.MustCompile(reg)
+	return re.MatchString(s)
+}
+
+// string not include
+func snincOp(s, substr string) bool {
+	reg := fmt.Sprintf("^%s[^\\w]+|[^\\w]+%s[^\\w]+|[^\\w]+%s$|^%s$", substr, substr, substr, substr)
+	re := regexp.MustCompile(reg)
+	return !re.MatchString(s)
 }

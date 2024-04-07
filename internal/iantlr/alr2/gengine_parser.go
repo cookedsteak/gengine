@@ -34,22 +34,22 @@ func gengineParserInit() {
 	staticData := &GengineParserStaticData
 	staticData.LiteralNames = []string{
 		"", "','", "'@name'", "'@id'", "'@code'", "'@desc'", "'@sal'", "", "",
-		"'&&'", "'||'", "'and'", "'or'", "'&'", "'|'", "", "", "", "", "", "",
-		"", "", "", "", "", "", "", "", "", "", "'+'", "'-'", "'/'", "'*'",
-		"'=='", "'>'", "'<'", "'>='", "'<='", "'!='", "'!'", "':='", "'='",
-		"'+='", "'-='", "'*='", "'/='", "'['", "']'", "';'", "'{'", "'}'", "'('",
-		"')'", "'.'",
+		"'&&'", "'||'", "' and '", "' or '", "'&'", "'|'", "' sin '", "' snin '",
+		"' sinc '", "' sninc '", "", "", "", "", "", "", "", "", "", "", "",
+		"", "", "", "", "", "'+'", "'-'", "'/'", "'*'", "'=='", "'>'", "'<'",
+		"'>='", "'<='", "'!='", "'!'", "':='", "'='", "'+='", "'-='", "'*='",
+		"'/='", "'['", "']'", "';'", "'{'", "'}'", "'('", "')'", "'.'",
 	}
 	staticData.SymbolicNames = []string{
 		"", "", "", "", "", "", "", "NIL", "RULE", "AND", "OR", "AND_STR", "OR_STR",
-		"AND_SINGLE", "OR_SINGLE", "CONC", "IF", "ELSE", "RETURN", "FOR", "BREAK",
-		"FORRANGE", "CONTINUE", "TRUE", "FALSE", "NULL_LITERAL", "SALIENCE",
-		"BEGIN", "END", "SIMPLENAME", "INT", "PLUS", "MINUS", "DIV", "MUL",
-		"EQUALS", "GT", "LT", "GTE", "LTE", "NOTEQUALS", "NOT", "ASSIGN", "SET",
-		"PLUSEQUAL", "MINUSEQUAL", "MULTIEQUAL", "DIVEQUAL", "LSQARE", "RSQARE",
-		"SEMICOLON", "LR_BRACE", "RR_BRACE", "LR_BRACKET", "RR_BRACKET", "DOT",
-		"DQUOTA_STRING", "DOTTEDNAME", "DOUBLEDOTTEDNAME", "REAL_LITERAL", "SL_COMMENT",
-		"WS",
+		"AND_SINGLE", "OR_SINGLE", "SIN", "SNIN", "SINC", "SNINC", "CONC", "IF",
+		"ELSE", "RETURN", "FOR", "BREAK", "FORRANGE", "CONTINUE", "TRUE", "FALSE",
+		"NULL_LITERAL", "SALIENCE", "BEGIN", "END", "SIMPLENAME", "INT", "PLUS",
+		"MINUS", "DIV", "MUL", "EQUALS", "GT", "LT", "GTE", "LTE", "NOTEQUALS",
+		"NOT", "ASSIGN", "SET", "PLUSEQUAL", "MINUSEQUAL", "MULTIEQUAL", "DIVEQUAL",
+		"LSQARE", "RSQARE", "SEMICOLON", "LR_BRACE", "RR_BRACE", "LR_BRACKET",
+		"RR_BRACKET", "DOT", "DQUOTA_STRING", "DOTTEDNAME", "DOUBLEDOTTEDNAME",
+		"REAL_LITERAL", "SL_COMMENT", "WS",
 	}
 	staticData.RuleNames = []string{
 		"primary", "ruleEntity", "ruleName", "ruleDescription", "salience",
@@ -64,7 +64,7 @@ func gengineParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 61, 372, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 65, 372, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 2, 19, 7, 19, 2, 20, 7, 20, 2,
@@ -104,8 +104,8 @@ func gengineParserInit() {
 		1, 43, 1, 43, 1, 43, 0, 2, 18, 20, 44, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18,
 		20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54,
 		56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 0, 7, 1,
-		0, 23, 24, 2, 0, 29, 29, 57, 58, 1, 0, 31, 32, 1, 0, 33, 34, 1, 0, 35,
-		40, 1, 0, 9, 14, 1, 0, 42, 47, 392, 0, 89, 1, 0, 0, 0, 2, 93, 1, 0, 0,
+		0, 27, 28, 2, 0, 33, 33, 61, 62, 1, 0, 35, 36, 1, 0, 37, 38, 1, 0, 39,
+		44, 1, 0, 9, 18, 1, 0, 46, 51, 392, 0, 89, 1, 0, 0, 0, 2, 93, 1, 0, 0,
 		0, 4, 105, 1, 0, 0, 0, 6, 107, 1, 0, 0, 0, 8, 109, 1, 0, 0, 0, 10, 112,
 		1, 0, 0, 0, 12, 117, 1, 0, 0, 0, 14, 133, 1, 0, 0, 0, 16, 135, 1, 0, 0,
 		0, 18, 161, 1, 0, 0, 0, 20, 182, 1, 0, 0, 0, 22, 203, 1, 0, 0, 0, 24, 207,
@@ -122,10 +122,10 @@ func gengineParserInit() {
 		1, 0, 0, 0, 91, 92, 1, 0, 0, 0, 92, 1, 1, 0, 0, 0, 93, 94, 5, 8, 0, 0,
 		94, 96, 3, 4, 2, 0, 95, 97, 3, 6, 3, 0, 96, 95, 1, 0, 0, 0, 96, 97, 1,
 		0, 0, 0, 97, 99, 1, 0, 0, 0, 98, 100, 3, 8, 4, 0, 99, 98, 1, 0, 0, 0, 99,
-		100, 1, 0, 0, 0, 100, 101, 1, 0, 0, 0, 101, 102, 5, 27, 0, 0, 102, 103,
-		3, 10, 5, 0, 103, 104, 5, 28, 0, 0, 104, 3, 1, 0, 0, 0, 105, 106, 3, 50,
+		100, 1, 0, 0, 0, 100, 101, 1, 0, 0, 0, 101, 102, 5, 31, 0, 0, 102, 103,
+		3, 10, 5, 0, 103, 104, 5, 32, 0, 0, 104, 3, 1, 0, 0, 0, 105, 106, 3, 50,
 		25, 0, 106, 5, 1, 0, 0, 0, 107, 108, 3, 50, 25, 0, 108, 7, 1, 0, 0, 0,
-		109, 110, 5, 26, 0, 0, 110, 111, 3, 46, 23, 0, 111, 9, 1, 0, 0, 0, 112,
+		109, 110, 5, 30, 0, 0, 110, 111, 3, 46, 23, 0, 111, 9, 1, 0, 0, 0, 112,
 		113, 3, 12, 6, 0, 113, 11, 1, 0, 0, 0, 114, 116, 3, 14, 7, 0, 115, 114,
 		1, 0, 0, 0, 116, 119, 1, 0, 0, 0, 117, 115, 1, 0, 0, 0, 117, 118, 1, 0,
 		0, 0, 118, 121, 1, 0, 0, 0, 119, 117, 1, 0, 0, 0, 120, 122, 3, 26, 13,
@@ -136,25 +136,25 @@ func gengineParserInit() {
 		134, 3, 40, 20, 0, 133, 123, 1, 0, 0, 0, 133, 124, 1, 0, 0, 0, 133, 125,
 		1, 0, 0, 0, 133, 126, 1, 0, 0, 0, 133, 127, 1, 0, 0, 0, 133, 128, 1, 0,
 		0, 0, 133, 129, 1, 0, 0, 0, 133, 130, 1, 0, 0, 0, 133, 131, 1, 0, 0, 0,
-		133, 132, 1, 0, 0, 0, 134, 15, 1, 0, 0, 0, 135, 136, 5, 15, 0, 0, 136,
-		143, 5, 51, 0, 0, 137, 142, 3, 54, 27, 0, 138, 142, 3, 56, 28, 0, 139,
+		133, 132, 1, 0, 0, 0, 134, 15, 1, 0, 0, 0, 135, 136, 5, 19, 0, 0, 136,
+		143, 5, 55, 0, 0, 137, 142, 3, 54, 27, 0, 138, 142, 3, 56, 28, 0, 139,
 		142, 3, 58, 29, 0, 140, 142, 3, 24, 12, 0, 141, 137, 1, 0, 0, 0, 141, 138,
 		1, 0, 0, 0, 141, 139, 1, 0, 0, 0, 141, 140, 1, 0, 0, 0, 142, 145, 1, 0,
 		0, 0, 143, 141, 1, 0, 0, 0, 143, 144, 1, 0, 0, 0, 144, 146, 1, 0, 0, 0,
-		145, 143, 1, 0, 0, 0, 146, 147, 5, 52, 0, 0, 147, 17, 1, 0, 0, 0, 148,
+		145, 143, 1, 0, 0, 0, 146, 147, 5, 56, 0, 0, 147, 17, 1, 0, 0, 0, 148,
 		149, 6, 9, -1, 0, 149, 162, 3, 20, 10, 0, 150, 152, 3, 74, 37, 0, 151,
 		150, 1, 0, 0, 0, 151, 152, 1, 0, 0, 0, 152, 153, 1, 0, 0, 0, 153, 162,
 		3, 22, 11, 0, 154, 156, 3, 74, 37, 0, 155, 154, 1, 0, 0, 0, 155, 156, 1,
-		0, 0, 0, 156, 157, 1, 0, 0, 0, 157, 158, 5, 53, 0, 0, 158, 159, 3, 18,
-		9, 0, 159, 160, 5, 54, 0, 0, 160, 162, 1, 0, 0, 0, 161, 148, 1, 0, 0, 0,
+		0, 0, 0, 156, 157, 1, 0, 0, 0, 157, 158, 5, 57, 0, 0, 158, 159, 3, 18,
+		9, 0, 159, 160, 5, 58, 0, 0, 160, 162, 1, 0, 0, 0, 161, 148, 1, 0, 0, 0,
 		161, 151, 1, 0, 0, 0, 161, 155, 1, 0, 0, 0, 162, 173, 1, 0, 0, 0, 163,
 		164, 10, 4, 0, 0, 164, 165, 3, 66, 33, 0, 165, 166, 3, 18, 9, 5, 166, 172,
 		1, 0, 0, 0, 167, 168, 10, 3, 0, 0, 168, 169, 3, 68, 34, 0, 169, 170, 3,
 		18, 9, 4, 170, 172, 1, 0, 0, 0, 171, 163, 1, 0, 0, 0, 171, 167, 1, 0, 0,
 		0, 172, 175, 1, 0, 0, 0, 173, 171, 1, 0, 0, 0, 173, 174, 1, 0, 0, 0, 174,
 		19, 1, 0, 0, 0, 175, 173, 1, 0, 0, 0, 176, 177, 6, 10, -1, 0, 177, 183,
-		3, 22, 11, 0, 178, 179, 5, 53, 0, 0, 179, 180, 3, 20, 10, 0, 180, 181,
-		5, 54, 0, 0, 181, 183, 1, 0, 0, 0, 182, 176, 1, 0, 0, 0, 182, 178, 1, 0,
+		3, 22, 11, 0, 178, 179, 5, 57, 0, 0, 179, 180, 3, 20, 10, 0, 180, 181,
+		5, 58, 0, 0, 181, 183, 1, 0, 0, 0, 182, 176, 1, 0, 0, 0, 182, 178, 1, 0,
 		0, 0, 183, 194, 1, 0, 0, 0, 184, 185, 10, 4, 0, 0, 185, 186, 3, 64, 32,
 		0, 186, 187, 3, 20, 10, 5, 187, 193, 1, 0, 0, 0, 188, 189, 10, 3, 0, 0,
 		189, 190, 3, 62, 31, 0, 190, 191, 3, 20, 10, 4, 191, 193, 1, 0, 0, 0, 192,
@@ -167,24 +167,24 @@ func gengineParserInit() {
 		23, 1, 0, 0, 0, 205, 208, 3, 76, 38, 0, 206, 208, 3, 60, 30, 0, 207, 205,
 		1, 0, 0, 0, 207, 206, 1, 0, 0, 0, 208, 209, 1, 0, 0, 0, 209, 212, 3, 70,
 		35, 0, 210, 213, 3, 20, 10, 0, 211, 213, 3, 18, 9, 0, 212, 210, 1, 0, 0,
-		0, 212, 211, 1, 0, 0, 0, 213, 25, 1, 0, 0, 0, 214, 216, 5, 18, 0, 0, 215,
+		0, 212, 211, 1, 0, 0, 0, 213, 25, 1, 0, 0, 0, 214, 216, 5, 22, 0, 0, 215,
 		217, 3, 18, 9, 0, 216, 215, 1, 0, 0, 0, 216, 217, 1, 0, 0, 0, 217, 27,
-		1, 0, 0, 0, 218, 219, 5, 16, 0, 0, 219, 220, 3, 18, 9, 0, 220, 221, 5,
-		51, 0, 0, 221, 222, 3, 12, 6, 0, 222, 226, 5, 52, 0, 0, 223, 225, 3, 30,
+		1, 0, 0, 0, 218, 219, 5, 20, 0, 0, 219, 220, 3, 18, 9, 0, 220, 221, 5,
+		55, 0, 0, 221, 222, 3, 12, 6, 0, 222, 226, 5, 56, 0, 0, 223, 225, 3, 30,
 		15, 0, 224, 223, 1, 0, 0, 0, 225, 228, 1, 0, 0, 0, 226, 224, 1, 0, 0, 0,
 		226, 227, 1, 0, 0, 0, 227, 230, 1, 0, 0, 0, 228, 226, 1, 0, 0, 0, 229,
 		231, 3, 32, 16, 0, 230, 229, 1, 0, 0, 0, 230, 231, 1, 0, 0, 0, 231, 29,
-		1, 0, 0, 0, 232, 233, 5, 17, 0, 0, 233, 234, 5, 16, 0, 0, 234, 235, 3,
-		18, 9, 0, 235, 236, 5, 51, 0, 0, 236, 237, 3, 12, 6, 0, 237, 238, 5, 52,
-		0, 0, 238, 31, 1, 0, 0, 0, 239, 240, 5, 17, 0, 0, 240, 241, 5, 51, 0, 0,
-		241, 242, 3, 12, 6, 0, 242, 243, 5, 52, 0, 0, 243, 33, 1, 0, 0, 0, 244,
-		245, 5, 19, 0, 0, 245, 246, 3, 24, 12, 0, 246, 247, 5, 50, 0, 0, 247, 248,
-		3, 18, 9, 0, 248, 249, 5, 50, 0, 0, 249, 250, 3, 24, 12, 0, 250, 251, 5,
-		51, 0, 0, 251, 252, 3, 12, 6, 0, 252, 253, 5, 52, 0, 0, 253, 35, 1, 0,
-		0, 0, 254, 255, 5, 20, 0, 0, 255, 37, 1, 0, 0, 0, 256, 257, 5, 21, 0, 0,
+		1, 0, 0, 0, 232, 233, 5, 21, 0, 0, 233, 234, 5, 20, 0, 0, 234, 235, 3,
+		18, 9, 0, 235, 236, 5, 55, 0, 0, 236, 237, 3, 12, 6, 0, 237, 238, 5, 56,
+		0, 0, 238, 31, 1, 0, 0, 0, 239, 240, 5, 21, 0, 0, 240, 241, 5, 55, 0, 0,
+		241, 242, 3, 12, 6, 0, 242, 243, 5, 56, 0, 0, 243, 33, 1, 0, 0, 0, 244,
+		245, 5, 23, 0, 0, 245, 246, 3, 24, 12, 0, 246, 247, 5, 54, 0, 0, 247, 248,
+		3, 18, 9, 0, 248, 249, 5, 54, 0, 0, 249, 250, 3, 24, 12, 0, 250, 251, 5,
+		55, 0, 0, 251, 252, 3, 12, 6, 0, 252, 253, 5, 56, 0, 0, 253, 35, 1, 0,
+		0, 0, 254, 255, 5, 24, 0, 0, 255, 37, 1, 0, 0, 0, 256, 257, 5, 25, 0, 0,
 		257, 258, 3, 60, 30, 0, 258, 259, 3, 72, 36, 0, 259, 260, 3, 60, 30, 0,
-		260, 261, 5, 51, 0, 0, 261, 262, 3, 12, 6, 0, 262, 263, 5, 52, 0, 0, 263,
-		39, 1, 0, 0, 0, 264, 265, 5, 22, 0, 0, 265, 41, 1, 0, 0, 0, 266, 276, 3,
+		260, 261, 5, 55, 0, 0, 261, 262, 3, 12, 6, 0, 262, 263, 5, 56, 0, 0, 263,
+		39, 1, 0, 0, 0, 264, 265, 5, 26, 0, 0, 265, 41, 1, 0, 0, 0, 266, 276, 3,
 		52, 26, 0, 267, 276, 3, 46, 23, 0, 268, 276, 3, 48, 24, 0, 269, 276, 3,
 		50, 25, 0, 270, 276, 3, 78, 39, 0, 271, 276, 3, 80, 40, 0, 272, 276, 3,
 		82, 41, 0, 273, 276, 3, 84, 42, 0, 274, 276, 3, 86, 43, 0, 275, 266, 1,
@@ -202,27 +202,27 @@ func gengineParserInit() {
 		0, 0, 294, 290, 1, 0, 0, 0, 294, 291, 1, 0, 0, 0, 294, 292, 1, 0, 0, 0,
 		294, 293, 1, 0, 0, 0, 295, 297, 1, 0, 0, 0, 296, 286, 1, 0, 0, 0, 297,
 		300, 1, 0, 0, 0, 298, 296, 1, 0, 0, 0, 298, 299, 1, 0, 0, 0, 299, 45, 1,
-		0, 0, 0, 300, 298, 1, 0, 0, 0, 301, 303, 5, 32, 0, 0, 302, 301, 1, 0, 0,
-		0, 302, 303, 1, 0, 0, 0, 303, 304, 1, 0, 0, 0, 304, 305, 5, 30, 0, 0, 305,
-		47, 1, 0, 0, 0, 306, 308, 5, 32, 0, 0, 307, 306, 1, 0, 0, 0, 307, 308,
-		1, 0, 0, 0, 308, 309, 1, 0, 0, 0, 309, 310, 5, 59, 0, 0, 310, 49, 1, 0,
-		0, 0, 311, 312, 5, 56, 0, 0, 312, 51, 1, 0, 0, 0, 313, 314, 7, 0, 0, 0,
-		314, 53, 1, 0, 0, 0, 315, 316, 5, 29, 0, 0, 316, 318, 5, 53, 0, 0, 317,
+		0, 0, 0, 300, 298, 1, 0, 0, 0, 301, 303, 5, 36, 0, 0, 302, 301, 1, 0, 0,
+		0, 302, 303, 1, 0, 0, 0, 303, 304, 1, 0, 0, 0, 304, 305, 5, 34, 0, 0, 305,
+		47, 1, 0, 0, 0, 306, 308, 5, 36, 0, 0, 307, 306, 1, 0, 0, 0, 307, 308,
+		1, 0, 0, 0, 308, 309, 1, 0, 0, 0, 309, 310, 5, 63, 0, 0, 310, 49, 1, 0,
+		0, 0, 311, 312, 5, 60, 0, 0, 312, 51, 1, 0, 0, 0, 313, 314, 7, 0, 0, 0,
+		314, 53, 1, 0, 0, 0, 315, 316, 5, 33, 0, 0, 316, 318, 5, 57, 0, 0, 317,
 		319, 3, 44, 22, 0, 318, 317, 1, 0, 0, 0, 318, 319, 1, 0, 0, 0, 319, 320,
-		1, 0, 0, 0, 320, 321, 5, 54, 0, 0, 321, 55, 1, 0, 0, 0, 322, 323, 5, 57,
-		0, 0, 323, 325, 5, 53, 0, 0, 324, 326, 3, 44, 22, 0, 325, 324, 1, 0, 0,
-		0, 325, 326, 1, 0, 0, 0, 326, 327, 1, 0, 0, 0, 327, 328, 5, 54, 0, 0, 328,
-		57, 1, 0, 0, 0, 329, 330, 5, 58, 0, 0, 330, 332, 5, 53, 0, 0, 331, 333,
+		1, 0, 0, 0, 320, 321, 5, 58, 0, 0, 321, 55, 1, 0, 0, 0, 322, 323, 5, 61,
+		0, 0, 323, 325, 5, 57, 0, 0, 324, 326, 3, 44, 22, 0, 325, 324, 1, 0, 0,
+		0, 325, 326, 1, 0, 0, 0, 326, 327, 1, 0, 0, 0, 327, 328, 5, 58, 0, 0, 328,
+		57, 1, 0, 0, 0, 329, 330, 5, 62, 0, 0, 330, 332, 5, 57, 0, 0, 331, 333,
 		3, 44, 22, 0, 332, 331, 1, 0, 0, 0, 332, 333, 1, 0, 0, 0, 333, 334, 1,
-		0, 0, 0, 334, 335, 5, 54, 0, 0, 335, 59, 1, 0, 0, 0, 336, 337, 7, 1, 0,
+		0, 0, 0, 334, 335, 5, 58, 0, 0, 335, 59, 1, 0, 0, 0, 336, 337, 7, 1, 0,
 		0, 337, 61, 1, 0, 0, 0, 338, 339, 7, 2, 0, 0, 339, 63, 1, 0, 0, 0, 340,
 		341, 7, 3, 0, 0, 341, 65, 1, 0, 0, 0, 342, 343, 7, 4, 0, 0, 343, 67, 1,
 		0, 0, 0, 344, 345, 7, 5, 0, 0, 345, 69, 1, 0, 0, 0, 346, 347, 7, 6, 0,
-		0, 347, 71, 1, 0, 0, 0, 348, 349, 5, 42, 0, 0, 349, 73, 1, 0, 0, 0, 350,
-		351, 5, 41, 0, 0, 351, 75, 1, 0, 0, 0, 352, 353, 3, 60, 30, 0, 353, 357,
-		5, 48, 0, 0, 354, 358, 3, 46, 23, 0, 355, 358, 3, 50, 25, 0, 356, 358,
+		0, 347, 71, 1, 0, 0, 0, 348, 349, 5, 46, 0, 0, 349, 73, 1, 0, 0, 0, 350,
+		351, 5, 45, 0, 0, 351, 75, 1, 0, 0, 0, 352, 353, 3, 60, 30, 0, 353, 357,
+		5, 52, 0, 0, 354, 358, 3, 46, 23, 0, 355, 358, 3, 50, 25, 0, 356, 358,
 		3, 60, 30, 0, 357, 354, 1, 0, 0, 0, 357, 355, 1, 0, 0, 0, 357, 356, 1,
-		0, 0, 0, 358, 359, 1, 0, 0, 0, 359, 360, 5, 49, 0, 0, 360, 77, 1, 0, 0,
+		0, 0, 0, 358, 359, 1, 0, 0, 0, 359, 360, 5, 53, 0, 0, 360, 77, 1, 0, 0,
 		0, 361, 362, 5, 2, 0, 0, 362, 79, 1, 0, 0, 0, 363, 364, 5, 3, 0, 0, 364,
 		81, 1, 0, 0, 0, 365, 366, 5, 4, 0, 0, 366, 83, 1, 0, 0, 0, 367, 368, 5,
 		5, 0, 0, 368, 85, 1, 0, 0, 0, 369, 370, 5, 6, 0, 0, 370, 87, 1, 0, 0, 0,
@@ -281,53 +281,57 @@ const (
 	gengineParserOR_STR           = 12
 	gengineParserAND_SINGLE       = 13
 	gengineParserOR_SINGLE        = 14
-	gengineParserCONC             = 15
-	gengineParserIF               = 16
-	gengineParserELSE             = 17
-	gengineParserRETURN           = 18
-	gengineParserFOR              = 19
-	gengineParserBREAK            = 20
-	gengineParserFORRANGE         = 21
-	gengineParserCONTINUE         = 22
-	gengineParserTRUE             = 23
-	gengineParserFALSE            = 24
-	gengineParserNULL_LITERAL     = 25
-	gengineParserSALIENCE         = 26
-	gengineParserBEGIN            = 27
-	gengineParserEND              = 28
-	gengineParserSIMPLENAME       = 29
-	gengineParserINT              = 30
-	gengineParserPLUS             = 31
-	gengineParserMINUS            = 32
-	gengineParserDIV              = 33
-	gengineParserMUL              = 34
-	gengineParserEQUALS           = 35
-	gengineParserGT               = 36
-	gengineParserLT               = 37
-	gengineParserGTE              = 38
-	gengineParserLTE              = 39
-	gengineParserNOTEQUALS        = 40
-	gengineParserNOT              = 41
-	gengineParserASSIGN           = 42
-	gengineParserSET              = 43
-	gengineParserPLUSEQUAL        = 44
-	gengineParserMINUSEQUAL       = 45
-	gengineParserMULTIEQUAL       = 46
-	gengineParserDIVEQUAL         = 47
-	gengineParserLSQARE           = 48
-	gengineParserRSQARE           = 49
-	gengineParserSEMICOLON        = 50
-	gengineParserLR_BRACE         = 51
-	gengineParserRR_BRACE         = 52
-	gengineParserLR_BRACKET       = 53
-	gengineParserRR_BRACKET       = 54
-	gengineParserDOT              = 55
-	gengineParserDQUOTA_STRING    = 56
-	gengineParserDOTTEDNAME       = 57
-	gengineParserDOUBLEDOTTEDNAME = 58
-	gengineParserREAL_LITERAL     = 59
-	gengineParserSL_COMMENT       = 60
-	gengineParserWS               = 61
+	gengineParserSIN              = 15
+	gengineParserSNIN             = 16
+	gengineParserSINC             = 17
+	gengineParserSNINC            = 18
+	gengineParserCONC             = 19
+	gengineParserIF               = 20
+	gengineParserELSE             = 21
+	gengineParserRETURN           = 22
+	gengineParserFOR              = 23
+	gengineParserBREAK            = 24
+	gengineParserFORRANGE         = 25
+	gengineParserCONTINUE         = 26
+	gengineParserTRUE             = 27
+	gengineParserFALSE            = 28
+	gengineParserNULL_LITERAL     = 29
+	gengineParserSALIENCE         = 30
+	gengineParserBEGIN            = 31
+	gengineParserEND              = 32
+	gengineParserSIMPLENAME       = 33
+	gengineParserINT              = 34
+	gengineParserPLUS             = 35
+	gengineParserMINUS            = 36
+	gengineParserDIV              = 37
+	gengineParserMUL              = 38
+	gengineParserEQUALS           = 39
+	gengineParserGT               = 40
+	gengineParserLT               = 41
+	gengineParserGTE              = 42
+	gengineParserLTE              = 43
+	gengineParserNOTEQUALS        = 44
+	gengineParserNOT              = 45
+	gengineParserASSIGN           = 46
+	gengineParserSET              = 47
+	gengineParserPLUSEQUAL        = 48
+	gengineParserMINUSEQUAL       = 49
+	gengineParserMULTIEQUAL       = 50
+	gengineParserDIVEQUAL         = 51
+	gengineParserLSQARE           = 52
+	gengineParserRSQARE           = 53
+	gengineParserSEMICOLON        = 54
+	gengineParserLR_BRACE         = 55
+	gengineParserRR_BRACE         = 56
+	gengineParserLR_BRACKET       = 57
+	gengineParserRR_BRACKET       = 58
+	gengineParserDOT              = 59
+	gengineParserDQUOTA_STRING    = 60
+	gengineParserDOTTEDNAME       = 61
+	gengineParserDOUBLEDOTTEDNAME = 62
+	gengineParserREAL_LITERAL     = 63
+	gengineParserSL_COMMENT       = 64
+	gengineParserWS               = 65
 )
 
 // gengineParser rules.
@@ -1391,7 +1395,7 @@ func (p *gengineParser) Statements() (localctx IStatementsContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&432345564772401152) != 0 {
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&6917529036358418432) != 0 {
 		{
 			p.SetState(114)
 			p.Statement()
@@ -2065,7 +2069,7 @@ func (p *gengineParser) ConcStatement() (localctx IConcStatementContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&432345564764438528) != 0 {
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&6917529036231016448) != 0 {
 		p.SetState(141)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
@@ -3433,7 +3437,7 @@ func (p *gengineParser) ReturnStmt() (localctx IReturnStmtContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1089873314777661564) != 0 {
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&-1008771037266968452) != 0 {
 		{
 			p.SetState(215)
 			p.expression(0)
@@ -6223,7 +6227,7 @@ func (p *gengineParser) FunctionCall() (localctx IFunctionCallContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1089873314777661564) != 0 {
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&-1008771037266968452) != 0 {
 		{
 			p.SetState(317)
 			p.FunctionArgs()
@@ -6388,7 +6392,7 @@ func (p *gengineParser) MethodCall() (localctx IMethodCallContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1089873314777661564) != 0 {
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&-1008771037266968452) != 0 {
 		{
 			p.SetState(324)
 			p.FunctionArgs()
@@ -6553,7 +6557,7 @@ func (p *gengineParser) ThreeLevelCall() (localctx IThreeLevelCallContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1089873314777661564) != 0 {
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&-1008771037266968452) != 0 {
 		{
 			p.SetState(331)
 			p.FunctionArgs()
@@ -6682,7 +6686,7 @@ func (p *gengineParser) Variable() (localctx IVariableContext) {
 		p.SetState(336)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&432345564764438528) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&6917529036231016448) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -7050,7 +7054,7 @@ func (p *gengineParser) ComparisonOperator() (localctx IComparisonOperatorContex
 		p.SetState(342)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&2164663517184) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&34634616274944) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -7085,6 +7089,10 @@ type ILogicalOperatorContext interface {
 	OR_STR() antlr.TerminalNode
 	AND_SINGLE() antlr.TerminalNode
 	OR_SINGLE() antlr.TerminalNode
+	SIN() antlr.TerminalNode
+	SNIN() antlr.TerminalNode
+	SINC() antlr.TerminalNode
+	SNINC() antlr.TerminalNode
 
 	// IsLogicalOperatorContext differentiates from other interfaces.
 	IsLogicalOperatorContext()
@@ -7146,6 +7154,22 @@ func (s *LogicalOperatorContext) OR_SINGLE() antlr.TerminalNode {
 	return s.GetToken(gengineParserOR_SINGLE, 0)
 }
 
+func (s *LogicalOperatorContext) SIN() antlr.TerminalNode {
+	return s.GetToken(gengineParserSIN, 0)
+}
+
+func (s *LogicalOperatorContext) SNIN() antlr.TerminalNode {
+	return s.GetToken(gengineParserSNIN, 0)
+}
+
+func (s *LogicalOperatorContext) SINC() antlr.TerminalNode {
+	return s.GetToken(gengineParserSINC, 0)
+}
+
+func (s *LogicalOperatorContext) SNINC() antlr.TerminalNode {
+	return s.GetToken(gengineParserSNINC, 0)
+}
+
 func (s *LogicalOperatorContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -7186,7 +7210,7 @@ func (p *gengineParser) LogicalOperator() (localctx ILogicalOperatorContext) {
 		p.SetState(344)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&32256) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&523776) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -7322,7 +7346,7 @@ func (p *gengineParser) AssignOperator() (localctx IAssignOperatorContext) {
 		p.SetState(346)
 		_la = p.GetTokenStream().LA(1)
 
-		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&277076930199552) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4433230883192832) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)

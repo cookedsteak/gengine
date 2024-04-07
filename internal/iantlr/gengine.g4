@@ -91,7 +91,7 @@ mathMdOperator : MUL | DIV ;
 
 comparisonOperator : GT | LT | GTE | LTE | EQUALS | NOTEQUALS;
 
-logicalOperator : AND | OR | AND_STR | OR_STR | AND_SINGLE | OR_SINGLE ;
+logicalOperator : AND | OR | AND_STR | OR_STR | AND_SINGLE | OR_SINGLE | SIN | SNIN | SINC | SNINC;
 
 assignOperator: ASSIGN | SET | PLUSEQUAL | MINUSEQUAL | MULTIEQUAL | DIVEQUAL ;
 
@@ -140,11 +140,14 @@ NIL                         : N I L;
 RULE                        : R U L E  ;
 AND                         : '&&' ;
 OR                          : '||' ;
-AND_STR                     : 'and';
-OR_STR                      : 'or';
+AND_STR                     : ' and ';
+OR_STR                      : ' or ';
 AND_SINGLE                  : '&';
 OR_SINGLE                   : '|';
-
+SIN                         : ' sin ';
+SNIN                        : ' snin ';
+SINC                        : ' sinc ';
+SNINC                       : ' sninc ';
 
 CONC                        : C O N C;
 IF                          : I F;

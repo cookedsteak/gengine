@@ -32,7 +32,7 @@ $ alias grun='java org.antlr.v4.gui.TestRig'
 ## 生产代码命令
 cd 到g4文件所在目录
 ```shell
-./antlr4.sh -Dlanguage=Go -encoding UTF-8 -visitor -o alr2 gengine.g4
+./antlr.sh -Dlanguage=Go -encoding UTF-8 -visitor -o alr2 gengine.g4
 ```
 
 ## 调试
