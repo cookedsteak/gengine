@@ -486,8 +486,8 @@ func getNumType(param reflect.Value) int {
 // newValue: 真实入参类型
 // toKind: 期望的入参类型
 func GetWantedValue(newValue reflect.Value, toKind reflect.Type) (reflect.Value, error) {
-	fmt.Println(fmt.Sprintf("入参类型：%s", newValue.Kind().String()))
-	fmt.Println(fmt.Sprintf("期望类型：%s", toKind.Kind().String()))
+	//fmt.Println(fmt.Sprintf("入参类型：%s", newValue.Kind().String()))
+	//fmt.Println(fmt.Sprintf("期望类型：%s", toKind.Kind().String()))
 	if newValue.Kind() == toKind.Kind() {
 		return newValue, nil
 	}
